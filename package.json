@@ -1,0 +1,19 @@
+{
+  "name": "mpc-js",
+  "version": "0.0.1",
+  "description": "A javascript client library for the Music Player Daemon",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mpd"
+  ],
+  "author": "Holger Benl <hbenl@evandor.de>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1"
+  }
+}
