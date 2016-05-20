@@ -42,7 +42,7 @@ export class PlaybackOptionsCommands {
 	/**
 	 * Sets crossfading between songs
 	 */
-	setCrossfade(seconds: number) {
+	setCrossfade(seconds: number): Promise<void> {
 		let cmd = `crossfade ${seconds}`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
