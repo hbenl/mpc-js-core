@@ -16,7 +16,7 @@ export class StatusCommands {
 	}
 
 	/**
-	 * clears the current error message in status
+	 * Clears the current error message in status
 	 */
 	clearError(): Promise<void> {
 		return this.protocol.sendCommand('clearerror').then(() => {});
