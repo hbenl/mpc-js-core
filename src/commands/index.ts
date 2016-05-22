@@ -4,3 +4,4 @@ export { PlaybackOptionsCommands } from './playbackOptions';
 export { CurrentPlaylistCommands } from './currentPlaylist';
 export { StoredPlaylistsCommands } from './storedPlaylists';
 export { DatabaseCommands } from './database';
+export { OutputDeviceCommands } from './outputDevice';
