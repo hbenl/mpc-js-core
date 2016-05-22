@@ -1,5 +1,5 @@
 import { MPDProtocol } from '../protocol';
-import { PlaylistItem, SongIdAndPosition } from '../objects/database';
+import { PlaylistItem, SongIdAndPosition } from '../objects/playlists';
 
 export class CurrentPlaylistCommands {
 
