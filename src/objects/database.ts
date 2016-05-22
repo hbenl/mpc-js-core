@@ -1,7 +1,7 @@
 /**
  * The types of objects in the music database
  */
-declare type DirectoryEntryType = 'song' | 'playlist' | 'directory';
+declare type DirectoryEntryType = 'file' | 'song' | 'playlist' | 'directory';
 
 /**
  * Base class for objects in the music database.
@@ -12,14 +12,31 @@ export class DirectoryEntry {
 	lastModified: Date;
 	entryType: DirectoryEntryType;
 
-	static fromValueMap(valueMap: Map<string, string>): DirectoryEntry {
+	static fromValueMap(valueMap: Map<string, string>, withMetadata = true): DirectoryEntry {
 		if (valueMap.get('file')) {
-			return new Song(valueMap);
+			if (withMetadata) {
+				return new Song(valueMap);
+			} else {
+				return new File(valueMap);
+			}
 		} else if (valueMap.get('directory')) {
 			return new Directory(valueMap);
 		} else if (valueMap.get('playlist')) {
 			return new Playlist(valueMap);
 		}
+	}
+}
+
+export class File extends DirectoryEntry {
+
+	size: number;
+
+	constructor(valueMap: Map<string, string>) {
+		super();
+		this.entryType = 'file';
+		this.path = valueMap.get('file');
+		this.lastModified = new Date(valueMap.get('Last-Modified'));
+		this.size = Number(valueMap.get('size'));
 	}
 }
 
@@ -65,5 +82,26 @@ export class Directory extends DirectoryEntry {
 		this.entryType = 'directory';
 		this.path = valueMap.get('directory');
 		this.lastModified = new Date(valueMap.get('Last-Modified'));
+	}
+}
+
+export class SongCount {
+
+	songs: number;
+	playtime: number;
+
+	constructor(valueMap: Map<string, string>) {
+		this.songs = Number(valueMap.get('songs'));
+		this.playtime = Number(valueMap.get('playtime'));
+	}
+}
+
+export class GroupedSongCount extends SongCount {
+
+	group: string;
+
+	constructor(valueMap: Map<string, string>, groupingTag: string) {
+		super(valueMap);
+		this.group = valueMap.get(groupingTag);
 	}
 }

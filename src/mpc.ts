@@ -1,5 +1,6 @@
 import { MPDProtocol } from './protocol';
-import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlaylistCommands, StoredPlaylistsCommands } from './commands/index';
+import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlaylistCommands,
+	StoredPlaylistsCommands, DatabaseCommands } from './commands/index';
 
 export class MPC extends MPDProtocol {
 
@@ -8,6 +9,7 @@ export class MPC extends MPDProtocol {
 	playbackOptions: PlaybackOptionsCommands;
 	currentPlaylist: CurrentPlaylistCommands;
 	storedPlaylists: StoredPlaylistsCommands;
+	database: DatabaseCommands;
 	
 	constructor() {
 		super();
@@ -16,5 +18,6 @@ export class MPC extends MPDProtocol {
 		this.playbackOptions = new PlaybackOptionsCommands(this);
 		this.currentPlaylist = new CurrentPlaylistCommands(this);
 		this.storedPlaylists = new StoredPlaylistsCommands(this);
+		this.database = new DatabaseCommands(this);
 	}
 }
