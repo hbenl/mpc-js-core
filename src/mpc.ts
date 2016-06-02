@@ -1,7 +1,7 @@
 import { MPDProtocol } from './protocol';
 import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlaylistCommands,
 	StoredPlaylistsCommands, DatabaseCommands, MountCommands, StickerCommands, ConnectionCommands,
-	OutputDeviceCommands, ReflectionCommands } from './commands/index';
+	OutputDeviceCommands, ReflectionCommands, ClientToClientCommands } from './commands/index';
 
 export class MPC extends MPDProtocol {
 
@@ -16,6 +16,7 @@ export class MPC extends MPDProtocol {
 	connection: ConnectionCommands;
 	outputDevices: OutputDeviceCommands;
 	reflection: ReflectionCommands;
+	clientToClient: ClientToClientCommands;
 
 	constructor() {
 		super();
@@ -30,5 +31,6 @@ export class MPC extends MPDProtocol {
 		this.connection = new ConnectionCommands(this);
 		this.outputDevices = new OutputDeviceCommands(this);
 		this.reflection = new ReflectionCommands(this);
+		this.clientToClient = new ClientToClientCommands(this);
 	}
 }

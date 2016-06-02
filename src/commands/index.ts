@@ -6,6 +6,7 @@ export { StoredPlaylistsCommands } from './storedPlaylists';
 export { DatabaseCommands } from './database';
 export { MountCommands } from './mount';
 export { StickerCommands } from './sticker';
+export { ConnectionCommands } from './connection';
 export { OutputDeviceCommands } from './outputDevice';
 export { ReflectionCommands } from './reflection';
-export { ConnectionCommands } from './connection';
+export { ClientToClientCommands } from './clientToClient';
