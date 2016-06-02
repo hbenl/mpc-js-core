@@ -7,3 +7,4 @@ export { DatabaseCommands } from './database';
 export { MountCommands } from './mount';
 export { StickerCommands } from './sticker';
 export { OutputDeviceCommands } from './outputDevice';
+export { ReflectionCommands } from './reflection';

@@ -1,5 +1,6 @@
 import * as EventEmitter from 'eventemitter3';
 import { SocketWrapper } from './socketWrapper';
+import { stringStartsWith } from './util';
 
 /**
  * Implements the [general syntax](http://www.musicpd.org/doc/protocol/syntax.html)
@@ -189,8 +190,4 @@ interface MPDRequest {
 	cmd: string;
 	resolve: (lines: string[]) => void;
 	reject: (error: any) => void;
-}
-
-function stringStartsWith(str: string, prefix: string): boolean {
-	return ((str.length >= prefix.length) && (str.substring(0, prefix.length) == prefix));
 }
