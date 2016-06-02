@@ -10,7 +10,7 @@ export class MPDProtocol extends EventEmitter {
 
 	private static failureRegExp = /ACK \[([0-9]+)@[0-9]+\] \{[^\}]*\} (.*)/;
 
-	private connection: SocketWrapper;
+	private _connection: SocketWrapper;
 
 	private ready = false;
 	private idle = false;
@@ -29,16 +29,16 @@ export class MPDProtocol extends EventEmitter {
 	 * Connect to the daemon via the given connection
 	 */
 	connect(connection: SocketWrapper) {
-		this.connection = connection;
-		this.connection.connect((msg) => this.processReceivedMessage(msg));
+		this._connection = connection;
+		this._connection.connect((msg) => this.processReceivedMessage(msg));
 	}
 
 	/**
 	 * Disconnect from the daemon
 	 */
 	disconnect() {
-		this.connection.disconnect();
-		this.connection = null;
+		this._connection.disconnect();
+		this._connection = null;
 		this.ready = false;
 		this.idle = false;
 		this.queuedRequests = [];
@@ -92,7 +92,7 @@ export class MPDProtocol extends EventEmitter {
 	private enqueueRequest(mpdRequest: MPDRequest) {
 		this.queuedRequests.push(mpdRequest);
 		if (this.idle) {
-			this.connection.send('noidle\n');
+			this._connection.send('noidle\n');
 			this.idle = false;
 		}
 	}
@@ -161,7 +161,7 @@ export class MPDProtocol extends EventEmitter {
 			});
 			commandString += 'command_list_end\n';
 		}
-		this.connection.send(commandString);
+		this._connection.send(commandString);
 	}
 
 	private initialCallback(msg: string) {

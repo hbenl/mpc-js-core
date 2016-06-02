@@ -8,3 +8,4 @@ export { MountCommands } from './mount';
 export { StickerCommands } from './sticker';
 export { OutputDeviceCommands } from './outputDevice';
 export { ReflectionCommands } from './reflection';
+export { ConnectionCommands } from './connection';
