@@ -4,5 +4,6 @@ export { PlaybackOptionsCommands } from './playbackOptions';
 export { CurrentPlaylistCommands } from './currentPlaylist';
 export { StoredPlaylistsCommands } from './storedPlaylists';
 export { DatabaseCommands } from './database';
-export { OutputDeviceCommands } from './outputDevice';
 export { MountCommands } from './mount';
+export { StickerCommands } from './sticker';
+export { OutputDeviceCommands } from './outputDevice';
