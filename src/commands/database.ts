@@ -11,7 +11,7 @@ export class DatabaseCommands {
 	count(tagsAndNeedles: [string, string][]): Promise<SongCount> {
 		let cmd = 'count';
 		tagsAndNeedles.forEach((tagAndNeedle) => {
-			cmd += ` ${tagAndNeedle[0]} ${tagAndNeedle[1]}`;
+			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
 		});
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, [], (valueMap) => new SongCount(valueMap))[0]);
@@ -24,7 +24,7 @@ export class DatabaseCommands {
 	countGrouped(tagsAndNeedles: [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
 		let cmd = 'count';
 		tagsAndNeedles.forEach((tagAndNeedle) => {
-			cmd += ` ${tagAndNeedle[0]} ${tagAndNeedle[1]}`;
+			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
 		});
 		cmd += ` group ${groupingTag}`;
 		return this.protocol.sendCommand(cmd).then(
@@ -44,7 +44,7 @@ export class DatabaseCommands {
 	find(typesAndNeedles: [string, string][], start?: number, end?: number): Promise<Song[]> {
 		let cmd = 'find';
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		if ((typeof start === 'number') && (typeof end === 'number')) {
 			cmd += ` window ${start}:${end}`;
@@ -61,7 +61,7 @@ export class DatabaseCommands {
 	findAdd(typesAndNeedles: [string, string][]): Promise<void> {
 		let cmd = 'findadd';
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
@@ -73,7 +73,7 @@ export class DatabaseCommands {
 	search(typesAndNeedles: [string, string][], start?: number, end?: number): Promise<Song[]> {
 		let cmd = 'search';
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		if ((typeof start === 'number') && (typeof end === 'number')) {
 			cmd += ` window ${start}:${end}`;
@@ -91,7 +91,7 @@ export class DatabaseCommands {
 	searchAdd(typesAndNeedles: [string, string][]): Promise<void> {
 		let cmd = 'searchadd';
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
@@ -105,7 +105,7 @@ export class DatabaseCommands {
 	searchAddPlaylist(name: string, typesAndNeedles: [string, string][]): Promise<void> {
 		let cmd = `searchaddpl ${name}`;
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
@@ -178,16 +178,32 @@ export class DatabaseCommands {
 	 * or 'file'. `typesAndNeedles` specifies a filter like the one in `find()`.
 	 * `groupingTags` may be used to group the results by one or more tags.
 	 */
-	list(type: string, typesAndNeedles: [string, string][] = [], groupingTags: string[] = []): Promise<Map<string, string>[]> {
+	list(type: string, typesAndNeedles: [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
 		let cmd = `list ${type}`;
 		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;
+			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
 		});
 		groupingTags.forEach((tag) => {
 			cmd += ` group ${tag}`;
 		});
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [type], (map) => map));
+		return this.protocol.sendCommand(cmd).then((lines) => {
+			let tagsGroupedByString = new Map<string, string[]>();
+			this.protocol.parse(lines, [type], (map) => {
+				let group: string[] = [];
+				groupingTags.forEach((groupingTag) => group.push(map.get(groupingTag)));
+				let groupString = JSON.stringify(group);
+				if (!tagsGroupedByString.has(groupString)) {
+					tagsGroupedByString.set(groupString, []);
+				}
+				tagsGroupedByString.get(groupString).push(map.get(type));
+			});
+			let groupedTags = new Map<string[], string[]>();
+			tagsGroupedByString.forEach((tags, groupString) => {
+				let group = JSON.parse(groupString);
+				groupedTags.set(group, tags);
+			});
+			return groupedTags;
+		});
 	}
 
 	/**
