@@ -39,8 +39,11 @@ export class StoredPlaylistsCommands {
 	 */
 	load(name: string, start?: number, end?: number): Promise<void> {
 		let cmd = `load "${name}"`;
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` ${start}:${end}`;
+		if (typeof start === 'number') {
+			cmd += ` ${start}:`;
+			if (typeof end === 'number') {
+				cmd += end;
+			}
 		}
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
@@ -89,7 +92,7 @@ export class StoredPlaylistsCommands {
 	 * Renames the playlist `name`.m3u to `newName`.m3u.
 	 */
 	rename(name: string, newName: string): Promise<void> {
-		let cmd = `playlistadd "${name}" "${newName}"`;
+		let cmd = `rename "${name}" "${newName}"`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 

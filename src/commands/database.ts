@@ -178,7 +178,7 @@ export class DatabaseCommands {
 	 * or 'file'. `typesAndNeedles` specifies a filter like the one in `find()`.
 	 * `groupingTags` may be used to group the results by one or more tags.
 	 */
-	list(type: string, typesAndNeedles: [string, string][], groupingTags: string[]): Promise<Map<string, string>[]> {
+	list(type: string, typesAndNeedles: [string, string][] = [], groupingTags: string[] = []): Promise<Map<string, string>[]> {
 		let cmd = `list ${type}`;
 		typesAndNeedles.forEach((typeAndNeedle) => {
 			cmd += ` ${typeAndNeedle[0]} ${typeAndNeedle[1]}`;

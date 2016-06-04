@@ -43,8 +43,11 @@ export class CurrentPlaylistCommands {
 	/**
 	 * Deletes a song range from the playlist.
 	 */
-	deleteRange(start: number, end: number): Promise<void> {
-		let cmd = `delete ${start}:${end}`;
+	deleteRange(start: number, end?: number): Promise<void> {
+		let cmd = `delete ${start}:`;
+		if (typeof end === 'number') {
+			cmd += end;
+		}
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -109,18 +112,27 @@ export class CurrentPlaylistCommands {
 	}
 
 	/**
-	 * Gets info for all songs, a single song or a range of songs in the playlist.
+	 * Gets info for all songs or a single song in the playlist.
 	 */
-	playlistInfo(start?: number, end?: number): Promise<PlaylistItem[]> {
+	playlistInfo(position?: number): Promise<PlaylistItem[]> {
 		let cmd = 'playlistinfo';
-		if (typeof start === 'number') {
-			cmd += ` ${start}`;
-			if (typeof end === 'number') {
-				cmd += `:${end}`;
-			}
+		if (typeof position === 'number') {
+			cmd += ` ${position}`;
 		}
 		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [], (valueMap) => new PlaylistItem(valueMap)));
+			(lines) => this.protocol.parse(lines, ['file'], (valueMap) => new PlaylistItem(valueMap)));
+	}
+
+	/**
+	 * Gets info for a range of songs in the playlist.
+	 */
+	playlistRangeInfo(start: number, end?: number): Promise<PlaylistItem[]> {
+		let cmd = `playlistinfo ${start}:`;
+		if (typeof end === 'number') {
+			cmd += `${end}`;
+		}
+		return this.protocol.sendCommand(cmd).then(
+			(lines) => this.protocol.parse(lines, ['file'], (valueMap) => new PlaylistItem(valueMap)));
 	}
 
 	/**
@@ -130,11 +142,14 @@ export class CurrentPlaylistCommands {
 	 */
 	playlistChanges(version: number, start?: number, end?: number): Promise<PlaylistItem[]> {
 		let cmd = `plchanges ${version}`;
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` ${start}:${end}`;
+		if (typeof start === 'number') {
+			cmd += ` ${start}:`;
+			if (typeof end === 'number') {
+				cmd += end;
+			}
 		}
 		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [], (valueMap) => new PlaylistItem(valueMap)));
+			(lines) => this.protocol.parse(lines, ['file'], (valueMap) => new PlaylistItem(valueMap)));
 	}
 
 	/**
@@ -145,11 +160,14 @@ export class CurrentPlaylistCommands {
 	 */
 	playlistChangesPosId(version: number, start?: number, end?: number): Promise<SongIdAndPosition[]> {
 		let cmd = `plchangesposid ${version}`;
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` ${start}:${end}`;
+		if (typeof start === 'number') {
+			cmd += ` ${start}:`;
+			if (typeof end === 'number') {
+				cmd += end;
+			}
 		}
 		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [], (valueMap) => new SongIdAndPosition(valueMap)));
+			(lines) => this.protocol.parse(lines, ['cpos'], (valueMap) => new SongIdAndPosition(valueMap)));
 	}
 
 	/**
@@ -192,8 +210,11 @@ export class CurrentPlaylistCommands {
 	 */
 	shuffle(start?: number, end?: number): Promise<void> {
 		let cmd = 'shuffle';
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` ${start}:${end}`;
+		if (typeof start === 'number') {
+			cmd += ` ${start}:`;
+			if (typeof end === 'number') {
+				cmd += end;
+			}
 		}
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}

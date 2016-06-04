@@ -7,8 +7,11 @@ export class PlaybackCommands {
 	/**
 	 * Begins playing the playlist at song number songPos.
 	 */
-	play(songPos: number) {
-		let cmd = `play ${songPos}`;
+	play(songPos?: number) {
+		let cmd = 'play';
+		if (typeof songPos === 'number') {
+			cmd += ` ${songPos}`;
+		}
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -16,7 +19,10 @@ export class PlaybackCommands {
 	 * Begins playing the playlist at song with the given songid.
 	 */
 	playId(songId: number) {
-		let cmd = `playId ${songId}`;
+		let cmd = 'playid';
+		if (typeof songId === 'number') {
+			cmd += ` ${songId}`;
+		}
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -45,8 +51,8 @@ export class PlaybackCommands {
 	/**
 	 * Seeks to the position time (in seconds; fractions allowed) of song with the given songId. 
 	 */
-	seekId(time: number) {
-		let cmd = `seekcur ${time}`;
+	seekId(songId: number, time: number) {
+		let cmd = `seekid ${songId} ${time}`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -67,7 +73,7 @@ export class PlaybackCommands {
 	/**
 	 * Pauses or resumes playback.
 	 */
-	pause(pause: boolean): Promise<void> {
+	pause(pause: boolean = true): Promise<void> {
 		let cmd = `pause ${pause ? 1 : 0}`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
