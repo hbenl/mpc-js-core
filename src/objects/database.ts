@@ -48,11 +48,25 @@ export class File extends DirectoryEntry {
 export class Song extends DirectoryEntry {
 
 	title: string;
+	name: string;
 	artist: string;
+	artistSort: string;
+	composer: string;
+	performer: string;
 	album: string;
+	albumSort: string;
 	albumArtist: string;
+	albumArtistSort: string;
+	track: string;
+	disc: string;
 	date: string;
 	genre: string;
+	comment: string;
+	musicBrainzArtistId: string;
+	musicBrainzAlbumId: string;
+	musicBrainzAlbumArtistId: string;
+	musicBrainzTrackId: string;
+	musicBrainzReleaseTrackId: string;
 	duration: number;
 
 	constructor(valueMap: Map<string, string>) {
@@ -61,11 +75,25 @@ export class Song extends DirectoryEntry {
 		this.path = valueMap.get('file');
 		this.lastModified = new Date(valueMap.get('Last-Modified'));
 		this.title = valueMap.get('Title');
+		this.name =  valueMap.get('Name');
 		this.artist = valueMap.get('Artist');
+		this.artistSort = valueMap.get('ArtistSort');
+		this.composer = valueMap.get('Composer');
+		this.performer = valueMap.get('Performer');
 		this.album = valueMap.get('Album');
+		this.albumSort = valueMap.get('AlbumSort');
 		this.albumArtist = valueMap.get('AlbumArtist');
+		this.albumArtistSort = valueMap.get('AlbumArtistSort');
+		this.track = valueMap.get('Track');
+		this.disc = valueMap.get('Disc');
 		this.date = valueMap.get('Date');
 		this.genre = valueMap.get('Genre');
+		this.comment = valueMap.get('Comment');
+		this.musicBrainzArtistId = valueMap.get('MUSICBRAINZ_ARTISTID');
+		this.musicBrainzAlbumId = valueMap.get('MUSICBRAINZ_ALBUMID');
+		this.musicBrainzAlbumArtistId = valueMap.get('MUSICBRAINZ_ALBUMARTISTID');
+		this.musicBrainzTrackId = valueMap.get('MUSICBRAINZ_TRACKID');
+		this.musicBrainzReleaseTrackId = valueMap.get('MUSICBRAINZ_RELEASETRACKID');
 		this.duration = Number(valueMap.get('Time'));
 	}
 }
