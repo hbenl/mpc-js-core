@@ -25,6 +25,11 @@ export class DirectoryEntry {
 			return new Playlist(valueMap);
 		}
 	}
+
+	isFile(): this is File { return this.entryType === 'file'; }
+	isSong(): this is Song { return this.entryType === 'song'; }
+	isPlaylist(): this is Playlist { return this.entryType === 'playlist'; }
+	isDirectory(): this is Directory { return this.entryType === 'directory'; }
 }
 
 export class File extends DirectoryEntry {
