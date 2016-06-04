@@ -28,7 +28,7 @@ export class TcpSocketWrapper implements SocketWrapper {
 	private port: number;
 	private socket: net.Socket;
 
-	constructor(hostname: string, port: number) {
+	constructor(hostname: string = 'localhost', port: number = 6600) {
 		this.hostname = hostname;
 		this.port = port;
 	}
