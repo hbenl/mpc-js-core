@@ -28,7 +28,7 @@ export class MPDProtocol extends EventEmitter {
 	/**
 	 * Connect to the daemon via the given connection
 	 */
-	connect(connection: SocketWrapper) {
+	protected connect(connection: SocketWrapper) {
 		this._connection = connection;
 		this._connection.connect((msg) => this.processReceivedMessage(msg));
 	}

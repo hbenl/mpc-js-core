@@ -28,7 +28,7 @@ export class TcpSocketWrapper implements SocketWrapper {
 	private port: number;
 	private socket: net.Socket;
 
-	constructor(hostname: string = 'localhost', port: number = 6600) {
+	constructor(hostname: string, port: number) {
 		this.hostname = hostname;
 		this.port = port;
 	}
@@ -78,15 +78,15 @@ export class UnixSocketWrapper implements SocketWrapper {
 
 export class WebSocketWrapper implements SocketWrapper {
 
-	private uri: string;
+	private url: string;
 	private wsClient: WebSocket;
 	
-	constructor(uri: string) {
-		this.uri = uri;
+	constructor(url: string) {
+		this.url = url;
 	}
 
 	connect(receive: (msg: string) => void) {
-		this.wsClient = new WebSocket(this.uri, ['base64']);
+		this.wsClient = new WebSocket(this.url, ['base64']);
 		this.wsClient.onmessage = (e) => receive(new Buffer(e.data, 'base64').toString('utf8'));
 	}
 
