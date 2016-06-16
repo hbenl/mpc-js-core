@@ -6,6 +6,10 @@ It features a Promise-based API, type definitions for [Typescript](https://www.t
 and works in both [node.js](https://nodejs.org/) and current browsers (connecting to mpd through a
 WebSocket bridge like [websockify](https://github.com/kanaka/websockify)).
 
+## API documentation
+
+Typedoc-generated API documentation is available [here](https://hbenl.github.io/mpc-js/typedoc/classes/_mpc_.mpc.html).
+
 ## Examples
 
 Install mpc.js
@@ -28,10 +32,10 @@ and connect to mpd
 mpc.connectTCP('localhost', 6600);
 
 // ... or a Unix socket
-mpc.connectUnixSocket('/run/mpd/socket')
+mpc.connectUnixSocket('/run/mpd/socket');
 
 // ... or a WebSocket
-mpc.connectWebSocket('ws://localhost:8000/')
+mpc.connectWebSocket('ws://localhost:8000/');
 ```
 
 ### Controlling playback
@@ -41,7 +45,7 @@ mpc.playback.play();
 
 mpc.playback.next();
 
-mpc.playback.stop()
+mpc.playback.stop();
 ```
 
 ### Changing the current playlist
@@ -58,7 +62,7 @@ Search the playlist for songs whose title contains 'dub' and delete them
 
 ```
 mpc.currentPlaylist.playlistSearch('Title', 'dub').then(
-	items => items.forEach(item => mpc.currentPlaylist.deleteId(item.id)))
+	items => items.forEach(item => mpc.currentPlaylist.deleteId(item.id)));
 ```
 
 ### Observing state changes
@@ -72,7 +76,7 @@ mpc.on('changed-player', () => {
 			console.log('Stopped playback');
 		}
 	});
-})
+});
 
 mpc.play();
 Playing 'Lake Orchard'
@@ -86,7 +90,7 @@ Stopped playback
 List the contents of a directory
 
 ```
-mpc.database.listFiles('ambient/Loscil/2010 - Endless Falls').then(console.log)
+mpc.database.listFiles('ambient/Loscil/2010 - Endless Falls').then(console.log);
 
 [ File {
     entryType: 'file',
@@ -105,7 +109,7 @@ mpc.database.listFiles('ambient/Loscil/2010 - Endless Falls').then(console.log)
 List metadata for the contents of a directory
 
 ```
-mpc.database.listInfo('ambient/Loscil/2010 - Endless Falls').then(console.log)
+mpc.database.listInfo('ambient/Loscil/2010 - Endless Falls').then(console.log);
 
 [ Song {
     entryType: 'song',
@@ -139,7 +143,7 @@ mpc.database.listInfo('ambient/Loscil/2010 - Endless Falls').then(console.log)
 List song titles from Loscil in 2006, grouped by album
 
 ```
-mpc.database.list('Title', [['Artist', 'Loscil'], ['Date', '2006']], ['Album']).then(console.log)
+mpc.database.list('Title', [['Artist', 'Loscil'], ['Date', '2006']], ['Album']).then(console.log);
 
 Map {
   [ 'Stases' ] => [ 'B15-A', 'Biced', 'Cotom', 'Faint Liquid', 'Micro Hydro', 'Nautical2',
