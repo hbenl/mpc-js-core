@@ -1,7 +1,7 @@
 /**
  * The types of objects in the music database
  */
-declare type DirectoryEntryType = 'file' | 'song' | 'playlist' | 'directory';
+export declare type DirectoryEntryType = 'file' | 'song' | 'playlist' | 'directory';
 
 /**
  * Base class for objects in the music database.
