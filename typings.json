@@ -2,8 +2,8 @@
   "name": "mpc-js",
   "dependencies": {},
   "globalDependencies": {
-    "es6-collections": "registry:dt/es6-collections#0.5.1+20160316155526",
-    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
-    "node": "registry:dt/node#6.0.0+20160613154055"
+    "es2015-collections": "registry:env/es2015-collections#1.0.0+20160526151700",
+    "es2015-promise": "registry:env/es2015-promise#1.0.0+20160526151700",
+    "node": "registry:env/node#6.0.0+20160610031852"
   }
 }
