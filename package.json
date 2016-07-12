@@ -25,7 +25,10 @@
   "bugs": {
     "url": "https://github.com/hbenl/mpc-js/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "base64-js": "^1.1.2",
+    "text-encoder-lite-module": "github:hbenl/TextEncoderLiteModule"
+  },
   "devDependencies": {
     "typescript": "^1.8.10",
     "typings": "^1.2.0"

@@ -1,6 +1,8 @@
 {
   "name": "mpc-js",
-  "dependencies": {},
+  "dependencies": {
+    "base64-js": "registry:npm/base64-js#1.1.2+20160526222755"
+  },
   "globalDependencies": {
     "es2015-collections": "registry:env/es2015-collections#1.0.0+20160526151700",
     "es2015-promise": "registry:env/es2015-promise#1.0.0+20160526151700",
