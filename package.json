@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "base64-js": "^1.1.2",
+    "eventemitter3": "^1.2.0",
     "text-encoder-lite-module": "github:hbenl/TextEncoderLiteModule"
   },
   "devDependencies": {

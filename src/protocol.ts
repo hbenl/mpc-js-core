@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+import * as EventEmitter from 'eventemitter3';
 import { SocketWrapper } from './socketWrapper';
 import { stringStartsWith } from './util';
 

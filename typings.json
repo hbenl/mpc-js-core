@@ -6,6 +6,7 @@
   "globalDependencies": {
     "es2015-collections": "registry:env/es2015-collections#1.0.0+20160526151700",
     "es2015-promise": "registry:env/es2015-promise#1.0.0+20160526151700",
+    "eventemitter3": "registry:dt/eventemitter3#1.1.1+20151208234524",
     "node": "registry:env/node#6.0.0+20160610031852"
   }
 }
