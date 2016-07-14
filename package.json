@@ -31,7 +31,7 @@
     "text-encoder-lite-module": "github:hbenl/TextEncoderLiteModule"
   },
   "devDependencies": {
-    "typescript": "^1.8.10",
+    "typescript": "^2.1.0-dev.20160714",
     "typings": "^1.2.0"
   }
 }
