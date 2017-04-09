@@ -18,7 +18,7 @@ export class CurrentPlaylistCommands {
 	 * `uri` is always a single file or URL.
 	 */
 	addId(uri: string, position?: number): Promise<number> {
-		let cmd = `addid ${uri}`;
+		let cmd = `addid "${uri}"`;
 		if (typeof position === 'number') {
 			cmd += ` ${position}`;
 		}
