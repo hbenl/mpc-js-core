@@ -1,10 +1,9 @@
-import { TcpSocketWrapper, UnixSocketWrapper, WebSocketWrapper } from './socketWrapper';
 import { MPDProtocol } from './protocol';
 import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlaylistCommands,
 	StoredPlaylistsCommands, DatabaseCommands, MountCommands, StickerCommands, ConnectionCommands,
 	OutputDeviceCommands, ReflectionCommands, ClientToClientCommands } from './commands/index';
 
-export class MPC extends MPDProtocol {
+export class MPCCore extends MPDProtocol {
 
 	status: StatusCommands;
 	playback: PlaybackCommands;
@@ -33,17 +32,5 @@ export class MPC extends MPDProtocol {
 		this.outputDevices = new OutputDeviceCommands(this);
 		this.reflection = new ReflectionCommands(this);
 		this.clientToClient = new ClientToClientCommands(this);
-	}
-
-	public connectTCP(hostname: string = 'localhost', port: number = 6600): void {
-		this.connect(new TcpSocketWrapper(hostname, port));
-	}
-
-	public connectUnixSocket(path: string): void {
-		this.connect(new UnixSocketWrapper(path));
-	}
-
-	public connectWebSocket(url: string) {
-		this.connect(new WebSocketWrapper(url));
 	}
 }

@@ -1,7 +1,7 @@
 {
-  "name": "mpc-js",
+  "name": "mpc-js-core",
   "version": "1.0.0",
-  "description": "A javascript client library for the Music Player Daemon",
+  "description": "A javascript client library for the Music Player Daemon - core package",
   "files": [
     "lib"
   ],
@@ -25,10 +25,7 @@
     "url": "https://github.com/hbenl/mpc-js/issues"
   },
   "dependencies": {
-    "base64-js": "^1.2.0",
-    "@types/base64-js": "^1.2.5",
-    "eventemitter3": "^2.0.3",
-    "text-encoder-lite-module": "github:hbenl/TextEncoderLiteModule"
+    "eventemitter3": "^2.0.3"
   },
   "devDependencies": {
     "typescript": "^2.2.2"

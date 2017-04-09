@@ -1,3 +1,4 @@
 export { MPDError } from './protocol';
-export { MPC } from './mpc';
+export { MPCCore } from './mpcCore';
+export { SocketWrapper } from './socketWrapper';
 export * from './objects/index';
