@@ -9,7 +9,7 @@
   "typings": "lib/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm_scripts/prepublish.sh"
+    "prepublish": "tsc"
   },
   "keywords": [
     "mpd"
