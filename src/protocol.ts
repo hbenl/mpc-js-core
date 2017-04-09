@@ -1,4 +1,4 @@
-import * as EventEmitter from 'eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 import { SocketWrapper } from './socketWrapper';
 import { stringStartsWith } from './util';
 
@@ -78,8 +78,6 @@ export class MPDProtocol extends EventEmitter {
 				}
 				currentValueMap.set(key, value);
 				lineCount++;
-			} else {
-				console.log('Huh? "' + line + '" at line ' + lineCount);
 			}
 		});
 		if (lineCount > 0) {
@@ -126,8 +124,6 @@ export class MPDProtocol extends EventEmitter {
 						req.reject(mpdError);
 						this.queuedRequests = this.runningRequests.concat(this.queuedRequests);
 						this.runningRequests = [];
-					} else {
-						console.log('WTF? "' + line + '"');
 					}
 					this.receivedLines = [];
 				}
