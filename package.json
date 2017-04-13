@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "rm -Rf lib && tsc",
-    "build": "tsc"
+    "build": "tsc",
+    "build-docs": "rm -Rf ../mpc-js-doc/typedoc && typedoc --mode modules --out ../mpc-js-doc/typedoc src/index.ts"
   },
   "keywords": [
     "mpd"
@@ -30,6 +31,7 @@
     "eventemitter3": "^2.0.3"
   },
   "devDependencies": {
+    "typedoc": "^0.5.10",
     "typescript": "^2.2.2"
   }
 }
