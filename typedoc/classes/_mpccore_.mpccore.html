@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MPDProtocol | mpc-js-core</title>
+	<title>MPCCore | mpc-js-core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,40 +56,27 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_protocol_.html">&quot;protocol&quot;</a>
+					<a href="../modules/_mpccore_.html">&quot;mpcCore&quot;</a>
 				</li>
 				<li>
-					<a href="_protocol_.mpdprotocol.html">MPDProtocol</a>
+					<a href="_mpccore_.mpccore.html">MPCCore</a>
 				</li>
 			</ul>
-			<h1>Class MPDProtocol</h1>
+			<h1>Class MPCCore</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Implements the <a href="http://www.musicpd.org/doc/protocol/syntax.html">general syntax</a>
-						of the <a href="http://www.musicpd.org/doc/protocol/index.html">Music Player Daemon protocol</a></p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">EventEmitter</span>
+						<a href="_protocol_.mpdprotocol.html" class="tsd-signature-type">MPDProtocol</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">MPDProtocol</span>
-								<ul class="tsd-hierarchy">
-									<li>
-										<a href="_mpccore_.mpccore.html" class="tsd-signature-type">MPCCore</a>
-									</li>
-								</ul>
+								<span class="target">MPCCore</span>
 							</li>
 						</ul>
 					</li>
@@ -100,78 +87,135 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#_connection" class="tsd-kind-icon">_connection</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#idle" class="tsd-kind-icon">idle</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_protocol_.mpdprotocol.html#mpdversion" class="tsd-kind-icon">mpd<wbr>Version</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#queuedrequests" class="tsd-kind-icon">queued<wbr>Requests</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#ready" class="tsd-kind-icon">ready</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#receivedlines" class="tsd-kind-icon">received<wbr>Lines</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#runningrequests" class="tsd-kind-icon">running<wbr>Requests</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_protocol_.mpdprotocol.html#failureregexp" class="tsd-kind-icon">failure<wbr>Reg<wbr>Exp</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_protocol_.mpdprotocol.html#prefixed" class="tsd-kind-icon">prefixed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#clienttoclient" class="tsd-kind-icon">client<wbr>ToClient</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#connection" class="tsd-kind-icon">connection</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#currentplaylist" class="tsd-kind-icon">current<wbr>Playlist</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#database" class="tsd-kind-icon">database</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#mounts" class="tsd-kind-icon">mounts</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#mpdversion" class="tsd-kind-icon">mpd<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#outputdevices" class="tsd-kind-icon">output<wbr>Devices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#playback" class="tsd-kind-icon">playback</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#playbackoptions" class="tsd-kind-icon">playback<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#reflection" class="tsd-kind-icon">reflection</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#stickers" class="tsd-kind-icon">stickers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_mpccore_.mpccore.html#storedplaylists" class="tsd-kind-icon">stored<wbr>Playlists</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_mpccore_.mpccore.html#prefixed" class="tsd-kind-icon">prefixed</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_protocol_.mpdprotocol.html#isready" class="tsd-kind-icon">is<wbr>Ready</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#isready" class="tsd-kind-icon">is<wbr>Ready</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_protocol_.mpdprotocol.html#connect" class="tsd-kind-icon">connect</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#dequeuerequests" class="tsd-kind-icon">dequeue<wbr>Requests</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_protocol_.mpdprotocol.html#disconnect" class="tsd-kind-icon">disconnect</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#emit" class="tsd-kind-icon">emit</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#enqueuerequest" class="tsd-kind-icon">enqueue<wbr>Request</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#idlecallback" class="tsd-kind-icon">idle<wbr>Callback</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#initialcallback" class="tsd-kind-icon">initial<wbr>Callback</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#listeners" class="tsd-kind-icon">listeners</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#off" class="tsd-kind-icon">off</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#on" class="tsd-kind-icon">on</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#once" class="tsd-kind-icon">once</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_protocol_.mpdprotocol.html#parse" class="tsd-kind-icon">parse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_protocol_.mpdprotocol.html#processreceivedmessage" class="tsd-kind-icon">process<wbr>Received<wbr>Message</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#removealllisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Listeners</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_protocol_.mpdprotocol.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_protocol_.mpdprotocol.html#sendcommand" class="tsd-kind-icon">send<wbr>Command</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_mpccore_.mpccore.html#connect" class="tsd-kind-icon">connect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#disconnect" class="tsd-kind-icon">disconnect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#emit" class="tsd-kind-icon">emit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#listeners" class="tsd-kind-icon">listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#off" class="tsd-kind-icon">off</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#on" class="tsd-kind-icon">on</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#once" class="tsd-kind-icon">once</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_mpccore_.mpccore.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#removealllisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_mpccore_.mpccore.html#sendcommand" class="tsd-kind-icon">send<wbr>Command</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_connection" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _connection</h3>
-					<div class="tsd-signature tsd-kind-icon">_connection<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_socketwrapper_.socketwrapper.html" class="tsd-signature-type">SocketWrapper</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in protocol.ts:13</li>
-						</ul>
-					</aside>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new MPCCore<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_mpccore_.mpccore.html" class="tsd-signature-type">MPCCore</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in mpcCore.ts:19</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_mpccore_.mpccore.html" class="tsd-signature-type">MPCCore</a></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="idle" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> idle</h3>
-					<div class="tsd-signature tsd-kind-icon">idle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="clienttoclient" class="tsd-anchor"></a>
+					<h3>client<wbr>ToClient</h3>
+					<div class="tsd-signature tsd-kind-icon">client<wbr>ToClient<span class="tsd-signature-symbol">:</span> <a href="_commands_clienttoclient_.clienttoclientcommands.html" class="tsd-signature-type">ClientToClientCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:16</li>
+							<li>Defined in mpcCore.ts:19</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="connection" class="tsd-anchor"></a>
+					<h3>connection</h3>
+					<div class="tsd-signature tsd-kind-icon">connection<span class="tsd-signature-symbol">:</span> <a href="_commands_connection_.connectioncommands.html" class="tsd-signature-type">ConnectionCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:16</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="currentplaylist" class="tsd-anchor"></a>
+					<h3>current<wbr>Playlist</h3>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Playlist<span class="tsd-signature-symbol">:</span> <a href="_commands_currentplaylist_.currentplaylistcommands.html" class="tsd-signature-type">CurrentPlaylistCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:11</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="database" class="tsd-anchor"></a>
+					<h3>database</h3>
+					<div class="tsd-signature tsd-kind-icon">database<span class="tsd-signature-symbol">:</span> <a href="_commands_database_.databasecommands.html" class="tsd-signature-type">DatabaseCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:13</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="mounts" class="tsd-anchor"></a>
+					<h3>mounts</h3>
+					<div class="tsd-signature tsd-kind-icon">mounts<span class="tsd-signature-symbol">:</span> <a href="_commands_mount_.mountcommands.html" class="tsd-signature-type">MountCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:14</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="mpdversion" class="tsd-anchor"></a>
 					<h3>mpd<wbr>Version</h3>
 					<div class="tsd-signature tsd-kind-icon">mpd<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#mpdversion">mpdVersion</a></p>
 						<ul>
 							<li>Defined in protocol.ts:24</li>
 						</ul>
@@ -182,53 +226,73 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="queuedrequests" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> queued<wbr>Requests</h3>
-					<div class="tsd-signature tsd-kind-icon">queued<wbr>Requests<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_protocol_.mpdrequest.html" class="tsd-signature-type">MPDRequest</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="outputdevices" class="tsd-anchor"></a>
+					<h3>output<wbr>Devices</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Devices<span class="tsd-signature-symbol">:</span> <a href="_commands_outputdevice_.outputdevicecommands.html" class="tsd-signature-type">OutputDeviceCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:18</li>
+							<li>Defined in mpcCore.ts:17</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="ready" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> ready</h3>
-					<div class="tsd-signature tsd-kind-icon">ready<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="playback" class="tsd-anchor"></a>
+					<h3>playback</h3>
+					<div class="tsd-signature tsd-kind-icon">playback<span class="tsd-signature-symbol">:</span> <a href="_commands_playback_.playbackcommands.html" class="tsd-signature-type">PlaybackCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:15</li>
+							<li>Defined in mpcCore.ts:9</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="receivedlines" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> received<wbr>Lines</h3>
-					<div class="tsd-signature tsd-kind-icon">received<wbr>Lines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="playbackoptions" class="tsd-anchor"></a>
+					<h3>playback<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">playback<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_commands_playbackoptions_.playbackoptionscommands.html" class="tsd-signature-type">PlaybackOptionsCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:19</li>
+							<li>Defined in mpcCore.ts:10</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="runningrequests" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> running<wbr>Requests</h3>
-					<div class="tsd-signature tsd-kind-icon">running<wbr>Requests<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_protocol_.mpdrequest.html" class="tsd-signature-type">MPDRequest</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="reflection" class="tsd-anchor"></a>
+					<h3>reflection</h3>
+					<div class="tsd-signature tsd-kind-icon">reflection<span class="tsd-signature-symbol">:</span> <a href="_commands_reflection_.reflectioncommands.html" class="tsd-signature-type">ReflectionCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:17</li>
+							<li>Defined in mpcCore.ts:18</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="failureregexp" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> failure<wbr>Reg<wbr>Exp</h3>
-					<div class="tsd-signature tsd-kind-icon">failure<wbr>Reg<wbr>Exp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/ACK \[([0-9]+)@[0-9]+\] \{[^\}]*\} (.*)/</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="_commands_status_.statuscommands.html" class="tsd-signature-type">StatusCommands</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in protocol.ts:11</li>
+							<li>Defined in mpcCore.ts:8</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="stickers" class="tsd-anchor"></a>
+					<h3>stickers</h3>
+					<div class="tsd-signature tsd-kind-icon">stickers<span class="tsd-signature-symbol">:</span> <a href="_commands_sticker_.stickercommands.html" class="tsd-signature-type">StickerCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:15</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="storedplaylists" class="tsd-anchor"></a>
+					<h3>stored<wbr>Playlists</h3>
+					<div class="tsd-signature tsd-kind-icon">stored<wbr>Playlists<span class="tsd-signature-symbol">:</span> <a href="_commands_storedplaylists_.storedplaylistscommands.html" class="tsd-signature-type">StoredPlaylistsCommands</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in mpcCore.ts:12</li>
 						</ul>
 					</aside>
 				</section>
@@ -244,17 +308,18 @@
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 					<a name="isready" class="tsd-anchor"></a>
 					<h3>is<wbr>Ready</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isReady<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#isready">isReady</a></p>
 								<ul>
 									<li>Defined in protocol.ts:26</li>
 								</ul>
@@ -264,7 +329,7 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="addlistener" class="tsd-anchor"></a>
@@ -296,15 +361,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="connect" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> connect</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">connect<span class="tsd-signature-symbol">(</span>connection<span class="tsd-signature-symbol">: </span><a href="../interfaces/_socketwrapper_.socketwrapper.html" class="tsd-signature-type">SocketWrapper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#connect">connect</a></p>
 								<ul>
 									<li>Defined in protocol.ts:31</li>
 								</ul>
@@ -324,32 +390,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="dequeuerequests" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> dequeue<wbr>Requests</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">dequeue<wbr>Requests<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in protocol.ts:141</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="disconnect" class="tsd-anchor"></a>
 					<h3>disconnect</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">disconnect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#disconnect">disconnect</a></p>
 								<ul>
 									<li>Defined in protocol.ts:39</li>
 								</ul>
@@ -395,29 +445,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="enqueuerequest" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> enqueue<wbr>Request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">enqueue<wbr>Request<span class="tsd-signature-symbol">(</span>mpdRequest<span class="tsd-signature-symbol">: </span><a href="../interfaces/_protocol_.mpdrequest.html" class="tsd-signature-type">MPDRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in protocol.ts:90</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>mpdRequest: <a href="../interfaces/_protocol_.mpdrequest.html" class="tsd-signature-type">MPDRequest</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="eventnames" class="tsd-anchor"></a>
 					<h3>event<wbr>Names</h3>
@@ -439,52 +466,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="idlecallback" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> idle<wbr>Callback</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">idle<wbr>Callback<span class="tsd-signature-symbol">(</span>lines<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in protocol.ts:169</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>lines: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="initialcallback" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> initial<wbr>Callback</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">initial<wbr>Callback<span class="tsd-signature-symbol">(</span>msg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in protocol.ts:163</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>msg: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -642,15 +623,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
 					<a name="parse" class="tsd-anchor"></a>
 					<h3>parse</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">parse&lt;T&gt;<span class="tsd-signature-symbol">(</span>lines<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, markers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, convert<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#parse">parse</a></p>
 								<ul>
 									<li>Defined in protocol.ts:65</li>
 								</ul>
@@ -706,29 +688,6 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="processreceivedmessage" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> process<wbr>Received<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">process<wbr>Received<wbr>Message<span class="tsd-signature-symbol">(</span>msg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in protocol.ts:98</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>msg: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -799,15 +758,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="sendcommand" class="tsd-anchor"></a>
 					<h3>send<wbr>Command</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">send<wbr>Command<span class="tsd-signature-symbol">(</span>cmd<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_protocol_.mpdprotocol.html">MPDProtocol</a>.<a href="_protocol_.mpdprotocol.html#sendcommand">sendCommand</a></p>
 								<ul>
 									<li>Defined in protocol.ts:52</li>
 								</ul>
@@ -837,7 +797,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_protocol_.html">"protocol"</a>
+						<a href="../modules/_mpccore_.html">"mpc<wbr>Core"</a>
 					</li>
 				</ul>
 			</nav>
@@ -846,102 +806,99 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_protocol_.mpdprotocol.html" class="tsd-kind-icon">MPDProtocol</a>
+						<a href="_mpccore_.mpccore.html" class="tsd-kind-icon">MPCCore</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#_connection" class="tsd-kind-icon">_connection</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#idle" class="tsd-kind-icon">idle</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_protocol_.mpdprotocol.html#mpdversion" class="tsd-kind-icon">mpd<wbr>Version</a>
+								<a href="_mpccore_.mpccore.html#clienttoclient" class="tsd-kind-icon">client<wbr>ToClient</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#queuedrequests" class="tsd-kind-icon">queued<wbr>Requests</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#connection" class="tsd-kind-icon">connection</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#ready" class="tsd-kind-icon">ready</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#currentplaylist" class="tsd-kind-icon">current<wbr>Playlist</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#receivedlines" class="tsd-kind-icon">received<wbr>Lines</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#database" class="tsd-kind-icon">database</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#runningrequests" class="tsd-kind-icon">running<wbr>Requests</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#mounts" class="tsd-kind-icon">mounts</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="_protocol_.mpdprotocol.html#failureregexp" class="tsd-kind-icon">failure<wbr>Reg<wbr>Exp</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#mpdversion" class="tsd-kind-icon">mpd<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#outputdevices" class="tsd-kind-icon">output<wbr>Devices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#playback" class="tsd-kind-icon">playback</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#playbackoptions" class="tsd-kind-icon">playback<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#reflection" class="tsd-kind-icon">reflection</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#status" class="tsd-kind-icon">status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#stickers" class="tsd-kind-icon">stickers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_mpccore_.mpccore.html#storedplaylists" class="tsd-kind-icon">stored<wbr>Playlists</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_protocol_.mpdprotocol.html#prefixed" class="tsd-kind-icon">prefixed</a>
+								<a href="_mpccore_.mpccore.html#prefixed" class="tsd-kind-icon">prefixed</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_protocol_.mpdprotocol.html#isready" class="tsd-kind-icon">is<wbr>Ready</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_protocol_.mpdprotocol.html#connect" class="tsd-kind-icon">connect</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#dequeuerequests" class="tsd-kind-icon">dequeue<wbr>Requests</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_protocol_.mpdprotocol.html#disconnect" class="tsd-kind-icon">disconnect</a>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#isready" class="tsd-kind-icon">is<wbr>Ready</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#emit" class="tsd-kind-icon">emit</a>
+								<a href="_mpccore_.mpccore.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#enqueuerequest" class="tsd-kind-icon">enqueue<wbr>Request</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#idlecallback" class="tsd-kind-icon">idle<wbr>Callback</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#initialcallback" class="tsd-kind-icon">initial<wbr>Callback</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_mpccore_.mpccore.html#connect" class="tsd-kind-icon">connect</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#listeners" class="tsd-kind-icon">listeners</a>
+								<a href="_mpccore_.mpccore.html#disconnect" class="tsd-kind-icon">disconnect</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#off" class="tsd-kind-icon">off</a>
+								<a href="_mpccore_.mpccore.html#emit" class="tsd-kind-icon">emit</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#on" class="tsd-kind-icon">on</a>
+								<a href="_mpccore_.mpccore.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#once" class="tsd-kind-icon">once</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="_protocol_.mpdprotocol.html#parse" class="tsd-kind-icon">parse</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_protocol_.mpdprotocol.html#processreceivedmessage" class="tsd-kind-icon">process<wbr>Received<wbr>Message</a>
+								<a href="_mpccore_.mpccore.html#listeners" class="tsd-kind-icon">listeners</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#removealllisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Listeners</a>
+								<a href="_mpccore_.mpccore.html#off" class="tsd-kind-icon">off</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_protocol_.mpdprotocol.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a>
+								<a href="_mpccore_.mpccore.html#on" class="tsd-kind-icon">on</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_protocol_.mpdprotocol.html#sendcommand" class="tsd-kind-icon">send<wbr>Command</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#once" class="tsd-kind-icon">once</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#parse" class="tsd-kind-icon">parse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#removealllisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_mpccore_.mpccore.html#sendcommand" class="tsd-kind-icon">send<wbr>Command</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_protocol_.mpderror.html" class="tsd-kind-icon">MPDError</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_protocol_.mpdrequest.html" class="tsd-kind-icon">MPDRequest</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

@@ -3,11 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>mpc-js</title>
+	<title>mpc-js-core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">mpc-js</a>
+					<a href="index.html" class="title">mpc-js-core</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -57,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> mpc-js</h1>
+			<h1> mpc-js-core</h1>
 		</div>
 	</div>
 </header>
@@ -66,111 +65,16 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="mpc-js">mpc.js</h1>
-				<p>mpc.js is a full-featured javascript client library for the <a href="https://www.musicpd.org/">Music Player Daemon</a>.</p>
-				<p>It features a Promise-based API, type definitions for <a href="https://www.typescriptlang.org/">Typescript</a>
-					and works in both <a href="https://nodejs.org/">node.js</a> and current browsers (connecting to mpd through a
-				WebSocket bridge like <a href="https://github.com/kanaka/websockify">websockify</a>).</p>
-				<h2 id="examples">Examples</h2>
-				<p>Install mpc.js</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> mpc-js
-</code></pre><p>Then create a client</p>
-				<pre><code><span class="hljs-keyword">var</span> MPC = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mpc-js'</span>).MPC;
-<span class="hljs-keyword">var</span> mpc = <span class="hljs-keyword">new</span> MPC();
-</code></pre><p>and connect to mpd</p>
-				<pre><code><span class="hljs-comment">// via TCP</span>
-mpc<span class="hljs-selector-class">.connectTCP</span>(<span class="hljs-string">'localhost'</span>, <span class="hljs-number">6600</span>);
-
-<span class="hljs-comment">// ... or a Unix socket</span>
-mpc<span class="hljs-selector-class">.connectUnixSocket</span>(<span class="hljs-string">'/run/mpd/socket'</span>);
-
-<span class="hljs-comment">// ... or a WebSocket</span>
-mpc<span class="hljs-selector-class">.connectWebSocket</span>(<span class="hljs-string">'ws://localhost:8000/'</span>);
-</code></pre><h3 id="controlling-playback">Controlling playback</h3>
-				<pre><code><span class="hljs-selector-tag">mpc</span><span class="hljs-selector-class">.playback</span><span class="hljs-selector-class">.play</span>();
-
-<span class="hljs-selector-tag">mpc</span><span class="hljs-selector-class">.playback</span><span class="hljs-selector-class">.next</span>();
-
-<span class="hljs-selector-tag">mpc</span><span class="hljs-selector-class">.playback</span><span class="hljs-selector-class">.stop</span>();
-</code></pre><h3 id="changing-the-current-playlist">Changing the current playlist</h3>
-				<p>Clear the playlist and add a directory</p>
-				<pre><code>mpc<span class="hljs-selector-class">.currentPlaylist</span><span class="hljs-selector-class">.clear</span>();
-
-mpc<span class="hljs-selector-class">.currentPlaylist</span><span class="hljs-selector-class">.add</span>(<span class="hljs-string">'ambient/Loscil/2010 - Endless Falls'</span>);
-</code></pre><p>Search the playlist for songs whose title contains &#39;dub&#39; and delete them</p>
-				<pre><code>mpc<span class="hljs-selector-class">.currentPlaylist</span><span class="hljs-selector-class">.playlistSearch</span>(<span class="hljs-string">'Title'</span>, <span class="hljs-string">'dub'</span>)<span class="hljs-selector-class">.then</span>(
-    items =&gt; items.forEach(item =&gt; mpc.currentPlaylist.deleteId(item.id)));
-</code></pre><h3 id="observing-state-changes">Observing state changes</h3>
-				<pre><code>mpc.<span class="hljs-literal">on</span>(<span class="hljs-string">'changed-player'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-    mpc.status.status().<span class="hljs-keyword">then</span>(status =&gt; { 
-        <span class="hljs-keyword">if</span> (status.state == <span class="hljs-string">'play'</span>) { 
-            mpc.status.currentSong().<span class="hljs-keyword">then</span>(song =&gt; <span class="hljs-built_in">console</span>.log(`<span class="javascript">Playing <span class="hljs-string">'${song.title}'</span></span>`));
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Stopped playback'</span>);
-        }
-    });
-});
-
-mpc.play();
-Playing <span class="hljs-string">'Lake Orchard'</span>
-
-mpc.stop();
-Stopped playback
-</code></pre><h3 id="exploring-the-mpd-database">Exploring the mpd database</h3>
-				<p>List the contents of a directory</p>
-				<pre><code>mpc.database.listFiles(<span class="hljs-string">'ambient/Loscil/2010 - Endless Falls'</span>).then(console.log);
-
-[ <span class="hljs-built_in">File</span> {
-    entryType: <span class="hljs-string">'file'</span>,
-    path: <span class="hljs-string">'01. Endless Falls.mp3'</span>,
-    lastModified: <span class="hljs-number">2014</span><span class="hljs-number">-07</span><span class="hljs-number">-03</span>T18:<span class="hljs-number">28</span>:<span class="hljs-number">07.000</span>Z,
-    <span class="hljs-built_in">size</span>: <span class="hljs-number">19280819</span> },
-  <span class="hljs-built_in">File</span> {
-    entryType: <span class="hljs-string">'file'</span>,
-    path: <span class="hljs-string">'02. Estuarine.mp3'</span>,
-    lastModified: <span class="hljs-number">2014</span><span class="hljs-number">-07</span><span class="hljs-number">-03</span>T18:<span class="hljs-number">29</span>:<span class="hljs-number">15.000</span>Z,
-    <span class="hljs-built_in">size</span>: <span class="hljs-number">20292272</span> },
-(...)
-]
-</code></pre><p>List metadata for the contents of a directory</p>
-				<pre><code>mpc.database.listInfo(<span class="hljs-string">'ambient/Loscil/2010 - Endless Falls'</span>).<span class="hljs-keyword">then</span>(<span class="hljs-built_in">console</span>.log);
-
-[ Song {
-    entryType: <span class="hljs-string">'song'</span>,
-    path: <span class="hljs-string">'ambient/Loscil/2010 - Endless Falls/01. Endless Falls.mp3'</span>,
-    lastModified: <span class="hljs-number">2014</span><span class="hljs-number">-07</span><span class="hljs-number">-03</span>T18:<span class="hljs-number">28</span>:<span class="hljs-number">07.000</span>Z,
-    title: <span class="hljs-string">'Endless Falls'</span>,
-    name: <span class="hljs-literal">undefined</span>,
-    artist: <span class="hljs-string">'Loscil'</span>,
-    artistSort: <span class="hljs-literal">undefined</span>,
-    composer: <span class="hljs-literal">undefined</span>,
-    performer: <span class="hljs-literal">undefined</span>,
-    album: <span class="hljs-string">'Endless Falls'</span>,
-    albumSort: <span class="hljs-literal">undefined</span>,
-    albumArtist: <span class="hljs-string">'Loscil'</span>,
-    albumArtistSort: <span class="hljs-literal">undefined</span>,
-    track: <span class="hljs-string">'01/08'</span>,
-    disc: <span class="hljs-literal">undefined</span>,
-    date: <span class="hljs-string">'2010'</span>,
-    genre: <span class="hljs-string">'Experimental, Ambient'</span>,
-    comment: <span class="hljs-literal">undefined</span>,
-    musicBrainzArtistId: <span class="hljs-literal">undefined</span>,
-    musicBrainzAlbumId: <span class="hljs-literal">undefined</span>,
-    musicBrainzAlbumArtistId: <span class="hljs-literal">undefined</span>,
-    musicBrainzTrackId: <span class="hljs-literal">undefined</span>,
-    musicBrainzReleaseTrackId: <span class="hljs-literal">undefined</span>,
-    duration: <span class="hljs-number">475</span> },
-(...)
-]
-</code></pre><p>List song titles from Loscil in 2006, grouped by album</p>
-				<pre><code>mpc.database.list(<span class="hljs-string">'Title'</span>, [[<span class="hljs-string">'Artist'</span>, <span class="hljs-string">'Loscil'</span>], [<span class="hljs-string">'Date'</span>, <span class="hljs-string">'2006'</span>]], [<span class="hljs-string">'Album'</span>]).then(console.log);
-
-<span class="hljs-symbol">Map</span> {
-  [ <span class="hljs-string">'Stases'</span> ] =&gt; [ <span class="hljs-string">'B15-A'</span>, <span class="hljs-string">'Biced'</span>, <span class="hljs-string">'Cotom'</span>, <span class="hljs-string">'Faint Liquid'</span>, <span class="hljs-string">'Micro Hydro'</span>, <span class="hljs-string">'Nautical2'</span>,
-  <span class="hljs-string">'Resurgence'</span>, <span class="hljs-string">'Sous-marin'</span>, <span class="hljs-string">'Still Upon The Ocean Floor'</span>, <span class="hljs-string">'Stratus'</span>, <span class="hljs-string">'Subaquatic'</span>, <span class="hljs-string">'Windless'</span> ],
-  [ <span class="hljs-string">'Plume'</span> ] =&gt; [ <span class="hljs-string">'Bellows'</span>, <span class="hljs-string">'Charlie'</span>, <span class="hljs-string">'Chinook'</span>, <span class="hljs-string">'Halcyon'</span>,
-  <span class="hljs-string">'Mistral'</span>, <span class="hljs-string">'Motoc'</span>, <span class="hljs-string">'Rorschach'</span>, <span class="hljs-string">'Steam'</span>, <span class="hljs-string">'Zephyr'</span> ],
-  [ <span class="hljs-string">'Idol Tryouts Two: Ghostly International Vol. Two'</span> ] =&gt; [ <span class="hljs-string">'Umbra'</span> ] }
-</code></pre>
+				<p>mpc.js is a javascript client library for the <a href="https://www.musicpd.org/">Music Player Daemon</a>.</p>
+				<p>It features a Promise-based API for all <a href="https://www.musicpd.org/doc/protocol/command_reference.html">mpd commands</a>,
+					type definitions for <a href="https://www.typescriptlang.org/">Typescript</a> and works in both
+					<a href="https://nodejs.org/">node.js</a> and current browsers (connecting to mpd through a WebSocket bridge
+				like <a href="https://github.com/kanaka/websockify">websockify</a>).</p>
+				<p>This is the core package containing everything except the browser- and node-specific networking code.</p>
+				<h2 id="documentation">Documentation</h2>
+				<p>Installation and usage examples for mpc.js can be found <a href="https://github.com/hbenl/mpc-js-node">here</a>
+					and <a href="http://typedoc.org/">Typedoc</a>-generated API documentation is available
+				<a href="https://hbenl.github.io/mpc-js-core/typedoc/classes/_mpccore_.mpccore.html">here</a>.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -179,88 +83,82 @@ Stopped playback
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_clienttoclient_.html">"commands/client<wbr>ToClient"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_connection_.html">"commands/connection"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_currentplaylist_.html">"commands/current<wbr>Playlist"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_database_.html">"commands/database"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_index_.html">"commands/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_mount_.html">"commands/mount"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_outputdevice_.html">"commands/output<wbr>Device"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_playback_.html">"commands/playback"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_playbackoptions_.html">"commands/playback<wbr>Options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_reflection_.html">"commands/reflection"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_status_.html">"commands/status"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_sticker_.html">"commands/sticker"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_commands_storedplaylists_.html">"commands/stored<wbr>Playlists"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_index_.html">"index"</a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_mpccore_.html">"mpc<wbr>Core"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_clienttoclient_.html">"commands/client<wbr>ToClient"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_connection_.html">"commands/connection"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_currentplaylist_.html">"commands/current<wbr>Playlist"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_database_.html">"commands/database"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_index_.html">"commands/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_mount_.html">"commands/mount"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_outputdevice_.html">"commands/output<wbr>Device"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_playback_.html">"commands/playback"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_playbackoptions_.html">"commands/playback<wbr>Options"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_reflection_.html">"commands/reflection"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_status_.html">"commands/status"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_sticker_.html">"commands/sticker"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_commands_storedplaylists_.html">"commands/stored<wbr>Playlists"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_mpc_.html">"mpc"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_database_.html">"objects/database"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_decoder_.html">"objects/decoder"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_index_.html">"objects/index"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_mount_.html">"objects/mount"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_outputdevice_.html">"objects/output<wbr>Device"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_playlists_.html">"objects/playlists"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_statistics_.html">"objects/statistics"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_objects_status_.html">"objects/status"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_protocol_.html">"protocol"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_socketwrapper_.html">"socket<wbr>Wrapper"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_util_.html">"util"</a>
 					</li>
 				</ul>
@@ -332,7 +230,7 @@ Stopped playback
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
