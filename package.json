@@ -19,11 +19,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hbenl/mpc-js.git"
+    "url": "https://github.com/hbenl/mpc-js-core.git"
   },
-  "homepage": "https://github.com/hbenl/mpc-js",
+  "homepage": "https://github.com/hbenl/mpc-js-core",
   "bugs": {
-    "url": "https://github.com/hbenl/mpc-js/issues"
+    "url": "https://github.com/hbenl/mpc-js-core/issues"
   },
   "dependencies": {
     "eventemitter3": "^2.0.3"
