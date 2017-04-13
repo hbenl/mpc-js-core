@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A javascript client library for the Music Player Daemon - core package",
   "files": [
-    "lib"
+    "lib",
+    "README.md"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
