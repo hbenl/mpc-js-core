@@ -51,7 +51,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => DirectoryEntry.fromValueMap(valueMap, false)));
+			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, false)));
 	}
 
 	/**
@@ -80,7 +80,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => DirectoryEntry.fromValueMap(valueMap, false)));
+			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, false)));
 	}
 
 	/**
@@ -123,7 +123,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file', 'directory'], 
-			(valueMap) => DirectoryEntry.fromValueMap(valueMap, false)));
+			(valueMap) => <File | Directory>DirectoryEntry.fromValueMap(valueMap, false)));
 	}
 
 	/**
@@ -140,7 +140,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file', 'playlist', 'directory'], 
-			(valueMap) => DirectoryEntry.fromValueMap(valueMap, true)));
+			(valueMap) => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true)));
 	}
 
 	/**
@@ -170,7 +170,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file', 'playlist', 'directory'], 
-			(valueMap) => DirectoryEntry.fromValueMap(valueMap, true)));
+			(valueMap) => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true)));
 	}
 
 	/**

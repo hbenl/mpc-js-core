@@ -80,6 +80,6 @@ export class PlaybackOptionsCommands {
 
 	getReplayGainMode(): Promise<'off' | 'track' | 'album' | 'auto'> {
 		return this.protocol.sendCommand('replay_gain_status').then(
-			(lines) => lines[0].substring(18));
+			(lines) => <'off' | 'track' | 'album' | 'auto'>lines[0].substring(18));
 	}
 }

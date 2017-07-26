@@ -6,6 +6,7 @@
     "sourceMap": true,
     "declaration": true,
     "rootDir": "src",
-    "outDir": "lib"
+    "outDir": "lib",
+    "types": []
   }
 }
