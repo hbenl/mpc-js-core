@@ -5,18 +5,18 @@ import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlayl
 
 export class MPCCore extends MPDProtocol {
 
-	status: StatusCommands;
-	playback: PlaybackCommands;
-	playbackOptions: PlaybackOptionsCommands;
-	currentPlaylist: CurrentPlaylistCommands;
-	storedPlaylists: StoredPlaylistsCommands;
-	database: DatabaseCommands;
-	mounts: MountCommands;
-	stickers: StickerCommands;
-	connection: ConnectionCommands;
-	outputDevices: OutputDeviceCommands;
-	reflection: ReflectionCommands;
-	clientToClient: ClientToClientCommands;
+	readonly status: StatusCommands;
+	readonly playback: PlaybackCommands;
+	readonly playbackOptions: PlaybackOptionsCommands;
+	readonly currentPlaylist: CurrentPlaylistCommands;
+	readonly storedPlaylists: StoredPlaylistsCommands;
+	readonly database: DatabaseCommands;
+	readonly mounts: MountCommands;
+	readonly stickers: StickerCommands;
+	readonly connection: ConnectionCommands;
+	readonly outputDevices: OutputDeviceCommands;
+	readonly reflection: ReflectionCommands;
+	readonly clientToClient: ClientToClientCommands;
 
 	constructor() {
 		super();

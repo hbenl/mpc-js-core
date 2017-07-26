@@ -34,6 +34,7 @@ export class DirectoryEntry {
 
 export class File extends DirectoryEntry {
 
+	entryType: 'file';
 	size: number;
 
 	constructor(valueMap: Map<string, string>) {
@@ -47,6 +48,7 @@ export class File extends DirectoryEntry {
 
 export class Song extends DirectoryEntry {
 
+	entryType: 'song';
 	title: string;
 	name: string;
 	artist: string;
@@ -100,6 +102,8 @@ export class Song extends DirectoryEntry {
 
 export class Playlist extends DirectoryEntry {
 
+	entryType: 'playlist';
+
 	constructor(valueMap: Map<string, string>) {
 		super();
 		this.entryType = 'playlist';
@@ -109,6 +113,8 @@ export class Playlist extends DirectoryEntry {
 }
 
 export class Directory extends DirectoryEntry {
+
+	entryType: 'directory';
 
 	constructor(valueMap: Map<string, string>) {
 		super();

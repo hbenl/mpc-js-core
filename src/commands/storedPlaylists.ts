@@ -49,7 +49,7 @@ export class StoredPlaylistsCommands {
 	}
 
 	/**
-	 * Saves the current playlist to `name`.m3u from the playlist directory.
+	 * Saves the current playlist to `name`.m3u in the playlist directory.
 	 */
 	save(name: string): Promise<void> {
 		let cmd = `save "${name}"`;
