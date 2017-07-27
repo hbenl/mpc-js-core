@@ -40,6 +40,11 @@ export class Status {
 	 */
 	bitRate: number;
 
+	/**
+	 *  The format emitted by the decoder plugin during playback, format: "samplerate:bits:channels".
+	 */
+	audio: string;
+
 	sampleRate: number;
 
 	bitDepth: number;
@@ -88,8 +93,6 @@ export class Status {
 
 	error: string;
 
-	private static audioRegEx = /([0-9]+):([0-9]+):([0-9]+)/;
-
 	constructor(valueMap: Map<string, string>) {
 		this.state = <'play' | 'stop' | 'pause'>valueMap.get('state');
 		this.song = Number(valueMap.get('song'));
@@ -99,13 +102,11 @@ export class Status {
 		this.elapsed = Number(valueMap.get('elapsed'));
 		this.duration = Number(valueMap.get('duration'));
 		this.bitRate = Number(valueMap.get('bitrate'));
-		let audio = valueMap.get('audio');
-		if (audio) {
-			let match = audio.match(Status.audioRegEx);
-			this.sampleRate = Number(match[1]);
-			this.bitDepth = Number(match[2]);
-			this.channels = Number(match[3]);
-		}
+		this.audio = valueMap.get('audio');
+		let splitAudio = this.audio ? this.audio.split(':') : [];
+		this.sampleRate = (splitAudio.length > 0) ? Number(splitAudio[0]) : NaN;
+		this.bitDepth = (splitAudio.length > 1) ? Number(splitAudio[1]) : NaN;
+		this.channels = (splitAudio.length > 2) ? Number(splitAudio[2]) : NaN;
 		this.volume = Number(valueMap.get('volume'));
 		this.xfade = Number(valueMap.get('xfade'));
 		this.mixrampdb = Number(valueMap.get('mixrampdb'));
