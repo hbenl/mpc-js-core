@@ -45,11 +45,11 @@ export class Status {
 	 */
 	audio: string;
 
-	sampleRate: number;
+	sampleRate: number | undefined;
 
-	bitDepth: number;
+	bitDepth: number | undefined;
 
-	channels: number;
+	channels: number | undefined;
 
 	/**
 	 * 0-100
@@ -104,9 +104,9 @@ export class Status {
 		this.bitRate = Number(valueMap.get('bitrate'));
 		this.audio = valueMap.get('audio');
 		let splitAudio = this.audio ? this.audio.split(':') : [];
-		this.sampleRate = (splitAudio.length > 0) ? Number(splitAudio[0]) : NaN;
-		this.bitDepth = (splitAudio.length > 1) ? Number(splitAudio[1]) : NaN;
-		this.channels = (splitAudio.length > 2) ? Number(splitAudio[2]) : NaN;
+		this.sampleRate = Number(splitAudio[0]) || undefined;
+		this.bitDepth = Number(splitAudio[1]) || undefined;
+		this.channels = Number(splitAudio[2]) || undefined;
 		this.volume = Number(valueMap.get('volume'));
 		this.xfade = Number(valueMap.get('xfade'));
 		this.mixrampdb = Number(valueMap.get('mixrampdb'));
