@@ -167,12 +167,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:11</li>
+									<li>Defined in commands/database.ts:14</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Counts the number of songs and their total playtime in the database that match exactly.</p>
+									<p>Counts the number of songs and their total playtime in the database that match exactly.
+										Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+										tags as lower-case. Use <code>mpc.reflection.tagTypes()</code> to get the correct list of tags
+									supported by MPD.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -195,13 +198,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:24</li>
+									<li>Defined in commands/database.ts:30</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Counts the number of songs and their total playtime in the database that match exactly.
-									The results are grouped by tag <code>groupingTag</code> (e.g. &#39;Artist&#39;, &#39;Album&#39;, &#39;Date&#39;, &#39;Genre&#39;)</p>
+										The results are grouped by tag <code>groupingTag</code> (e.g. &#39;Artist&#39;, &#39;Album&#39;, &#39;Date&#39;, &#39;Genre&#39;)
+										Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+										tags as lower-case. Use <code>mpc.reflection.tagTypes()</code> to get the correct list of tags
+									supported by MPD.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -227,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:44</li>
+									<li>Defined in commands/database.ts:53</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,7 +245,10 @@
 										<li>&#39;file&#39; checks the full path (relative to the music directory)</li>
 										<li>&#39;base&#39; restricts the search to songs in the given directory (also relative to the music directory)</li>
 										<li>&#39;modified-since&#39; compares the file&#39;s time stamp with the given value (ISO 8601 or UNIX time stamp)
-										<code>start</code> and <code>end</code> can be used to query only a portion of the real response.</li>
+											<code>start</code> and <code>end</code> can be used to query only a portion of the real response.
+											Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+											tags as lower-case. Use <code>mpc.reflection.tagTypes()</code> to get the correct list of tags
+										supported by MPD.</li>
 									</ul>
 								</div>
 							</div>
@@ -269,7 +278,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:61</li>
+									<li>Defined in commands/database.ts:70</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -298,14 +307,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:181</li>
+									<li>Defined in commands/database.ts:193</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Lists unique tags values of the specified type. <code>type</code> can be any tag supported by MPD
 										or &#39;file&#39;. <code>typesAndNeedles</code> specifies a filter like the one in <code>find()</code>.
-									<code>groupingTags</code> may be used to group the results by one or more tags.</p>
+										<code>groupingTags</code> may be used to group the results by one or more tags.
+										Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+										tags as lower-case. Use <code>mpc.reflection.tagTypes()</code> to get the correct list of tags
+									supported by MPD.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -334,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:151</li>
+									<li>Defined in commands/database.ts:160</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:166</li>
+									<li>Defined in commands/database.ts:175</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -394,7 +406,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:119</li>
+									<li>Defined in commands/database.ts:128</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -425,7 +437,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:136</li>
+									<li>Defined in commands/database.ts:145</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -457,7 +469,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:217</li>
+									<li>Defined in commands/database.ts:229</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -490,7 +502,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:240</li>
+									<li>Defined in commands/database.ts:252</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -518,7 +530,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:73</li>
+									<li>Defined in commands/database.ts:82</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -553,7 +565,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:91</li>
+									<li>Defined in commands/database.ts:100</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -583,7 +595,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:105</li>
+									<li>Defined in commands/database.ts:114</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -617,7 +629,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in commands/database.ts:229</li>
+									<li>Defined in commands/database.ts:241</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
