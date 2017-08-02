@@ -7,6 +7,9 @@ export class DatabaseCommands {
 
 	/**
 	 * Counts the number of songs and their total playtime in the database that match exactly.
+	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
+	 * supported by MPD.
 	 */
 	count(tagsAndNeedles: [string, string][]): Promise<SongCount> {
 		let cmd = 'count';
@@ -20,6 +23,9 @@ export class DatabaseCommands {
 	/**
 	 * Counts the number of songs and their total playtime in the database that match exactly.
 	 * The results are grouped by tag `groupingTag` (e.g. 'Artist', 'Album', 'Date', 'Genre')
+	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
+	 * supported by MPD.
 	 */
 	countGrouped(tagsAndNeedles: [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
 		let cmd = 'count';
@@ -40,6 +46,9 @@ export class DatabaseCommands {
 	 * * 'base' restricts the search to songs in the given directory (also relative to the music directory)
 	 * * 'modified-since' compares the file's time stamp with the given value (ISO 8601 or UNIX time stamp) 
 	 * `start` and `end` can be used to query only a portion of the real response.
+	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
+	 * supported by MPD.
 	 */
 	find(typesAndNeedles: [string, string][], start?: number, end?: number): Promise<Song[]> {
 		let cmd = 'find';
@@ -177,6 +186,9 @@ export class DatabaseCommands {
 	 * Lists unique tags values of the specified type. `type` can be any tag supported by MPD
 	 * or 'file'. `typesAndNeedles` specifies a filter like the one in `find()`.
 	 * `groupingTags` may be used to group the results by one or more tags.
+	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
+	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
+	 * supported by MPD.
 	 */
 	list(type: string, typesAndNeedles: [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
 		let cmd = `list ${type}`;
