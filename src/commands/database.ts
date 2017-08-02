@@ -51,7 +51,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, false)));
+			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
 	}
 
 	/**
@@ -80,7 +80,7 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, false)));
+			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
 	}
 
 	/**
