@@ -10,7 +10,7 @@ export class MPDProtocol extends EventEmitter {
 
 	private static failureRegExp = /ACK \[([0-9]+)@[0-9]+\] \{[^\}]*\} (.*)/;
 
-	private _connection: SocketWrapper;
+	private _connection?: SocketWrapper;
 
 	private ready = false;
 	private idle = false;
@@ -28,19 +28,36 @@ export class MPDProtocol extends EventEmitter {
 	/**
 	 * Connect to the daemon via the given connection
 	 */
-	protected connect(connection: SocketWrapper) {
+	protected connect(connection: SocketWrapper): Promise<void> {
+
+		if (this._connection) {
+			throw new Error('Client is already connected');
+		}
+
 		this._connection = connection;
-		this._connection.connect((msg) => this.processReceivedMessage(msg));
+		return this._connection.connect(
+			(msg) => this.processReceivedMessage(msg),
+			(eventName, arg) => this.emit(eventName, arg)
+		);
 	}
 
 	/**
 	 * Disconnect from the daemon
 	 */
 	disconnect() {
+
+		if (!this._connection) {
+			throw new Error('Client isn\'t connected');
+		}
+
+		this.runningRequests.forEach((request) => request.reject('Disconnected'));
+		this.queuedRequests.forEach((request) => request.reject('Disconnected'));
+
 		this._connection.disconnect();
 		this._connection = null;
 		this.ready = false;
 		this.idle = false;
+		this.runningRequests = [];
 		this.queuedRequests = [];
 		this.receivedLines = [];
 	}

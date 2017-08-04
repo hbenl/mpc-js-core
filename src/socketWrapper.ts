@@ -7,7 +7,7 @@ export interface SocketWrapper {
 	 * This method will be called to initiate the connection
 	 * @param receive	This callback should be called when data from the daemon is received
 	 */
-	connect(receive: (msg: string) => void): void;
+	connect(receive: (msg: string) => void, emit?: (eventName: string, arg?: any) => void): Promise<void>;
 
 	/**
 	 * This method will be called to send data to the daemon
