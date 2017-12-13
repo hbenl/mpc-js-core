@@ -12,8 +12,9 @@ export class StoredPlaylist {
 export class PlaylistItem {
 
 	id: number;
-	position: number;	
+	position: number;
 	title: string;
+	name?: string;
 	artist: string;
 	album: string;
 	albumArtist: string;
@@ -22,11 +23,12 @@ export class PlaylistItem {
 	duration: number;
 	path: string;
 	lastModified: Date;
-	
+
 	constructor(valueMap: Map<string, string>) {
 		this.id = Number(valueMap.get('Id'));
 		this.position = Number(valueMap.get('Pos'));
 		this.title = valueMap.get('Title');
+		this.name = valueMap.get('Name');
 		this.artist = valueMap.get('Artist');
 		this.album = valueMap.get('Album');
 		this.albumArtist = valueMap.get('AlbumArtist');
