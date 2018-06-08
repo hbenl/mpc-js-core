@@ -93,7 +93,13 @@ export class MPDProtocol extends EventEmitter {
 					result.push(convert(currentValueMap));
 					currentValueMap = new Map<string, string>();
 				}
-				currentValueMap.set(key, value);
+				if (currentValueMap.has(key)) {
+					var multiValue = [currentValueMap.get(key), value].join(';');
+					currentValueMap.set(key, multiValue);
+				}
+				else {
+					currentValueMap.set(key, value);
+				}
 				lineCount++;
 			}
 		});
