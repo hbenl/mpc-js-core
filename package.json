@@ -11,7 +11,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "rm -Rf lib && tsc",
+    "reinstall": "rimraf node_modules package-lock.json && npm install",
+    "clean": "rimraf out vscode-test-explorer-*.vsix",
     "build": "tsc",
+    "watch": "tsc -w",
+    "rebuild": "npm run clean && npm run build",
     "build-docs": "rm -Rf ../mpc-js-doc/typedoc && typedoc --mode modules --out ../mpc-js-doc/typedoc src/index.ts"
   },
   "keywords": [
