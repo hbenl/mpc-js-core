@@ -32,11 +32,11 @@
     "url": "https://github.com/hbenl/mpc-js-core/issues"
   },
   "dependencies": {
-    "eventemitter3": "^3.1.2"
+    "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.3",
     "typedoc": "^0.14.2",
-    "typescript": "~3.5.1"
+    "typescript": "~3.5.3"
   }
 }
