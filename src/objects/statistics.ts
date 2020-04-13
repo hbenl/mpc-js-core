@@ -1,47 +1,49 @@
+import { getOptionalNumber } from '../util';
+
 export class Statistics {
 
 	/**
 	 * the number of artists in the database
 	 */
-	artists: number;
+	artists?: number;
 
 	/**
 	 * the number of albums in the database
 	 */
-	albums: number;
+	albums?: number;
 
 	/**
 	 * the number of sonds in the database
 	 */
-	songs: number;
+	songs?: number;
 
 	/**
 	 * daemon uptime in seconds
 	 */
-	uptime: number;
+	uptime?: number;
 
 	/**
 	 * sum of all song lengths in the database in seconds
 	 */
-	dbPlaytime: number;
+	dbPlaytime?: number;
 
 	/**
 	 * time of last database update
 	 */
-	dbUpdate: Date;
+	dbUpdate?: Date;
 
 	/**
 	 * time length in seconds of music played
 	 */
-	playtime: number;
+	playtime?: number;
 
 	constructor(valueMap: Map<string, string>) {
-		this.artists = Number(valueMap.get('artists'));
-		this.albums = Number(valueMap.get('albums'));
-		this.songs = Number(valueMap.get('songs'));
-		this.uptime = Number(valueMap.get('uptime'));
-		this.dbPlaytime = Number(valueMap.get('db_playtime'));
-		this.dbUpdate = new Date(Number(valueMap.get('db_update')) * 1000);
-		this.playtime = Number(valueMap.get('playtime'));
+		this.artists = getOptionalNumber(valueMap, 'artists');
+		this.albums = getOptionalNumber(valueMap, 'albums');
+		this.songs = getOptionalNumber(valueMap, 'songs');
+		this.uptime = getOptionalNumber(valueMap, 'uptime');
+		this.dbPlaytime = getOptionalNumber(valueMap, 'db_playtime');
+		this.dbUpdate = valueMap.has('db_update') ? new Date(Number(valueMap.get('db_update')) * 1000) : undefined;
+		this.playtime = getOptionalNumber(valueMap, 'playtime');
 	}
 }

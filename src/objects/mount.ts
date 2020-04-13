@@ -4,8 +4,12 @@ export class Mount {
 	storage: string;
 
 	constructor(valueMap: Map<string, string>) {
-		this.path = valueMap.get('mount');
-		this.storage = valueMap.get('storage');
+
+		if (!valueMap.has('mount')) throw new Error('Path not found for Mount object');
+		if (!valueMap.has('storage')) throw new Error('URI not found for Mount object');
+
+		this.path = valueMap.get('mount')!;
+		this.storage = valueMap.get('storage')!;
 	}
 }
 
@@ -15,7 +19,11 @@ export class Neighbor {
 	name: string;
 
 	constructor(valueMap: Map<string, string>) {
-		this.neighbor = valueMap.get('neighbor');
-		this.name = valueMap.get('name');
+
+		if (!valueMap.has('neighbor')) throw new Error('URI not found for Neighbor object');
+		if (!valueMap.has('storage')) throw new Error('Name not found for Neighbor object');
+
+		this.neighbor = valueMap.get('neighbor')!;
+		this.name = valueMap.get('name')!;
 	}
 }

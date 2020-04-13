@@ -67,8 +67,12 @@ export class StickerCommands {
 			(fileAndStickers) => {
 				let stickerMap = new Map<string, string>();
 				fileAndStickers.forEach((fileAndSticker) => {
-					let stickerValue = fileAndSticker.get('sticker').substring(name.length + 1);
-					stickerMap.set(fileAndSticker.get('file'), stickerValue);
+					const fileValue = fileAndSticker.get('file');
+					let stickerValue = fileAndSticker.get('sticker');
+					if (fileValue && stickerValue) {
+						stickerValue = stickerValue.substring(name.length + 1);
+						stickerMap.set(fileValue, stickerValue);
+					}
 				});
 				return stickerMap;
 			});

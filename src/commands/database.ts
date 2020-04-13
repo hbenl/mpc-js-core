@@ -202,12 +202,14 @@ export class DatabaseCommands {
 			let tagsGroupedByString = new Map<string, string[]>();
 			this.protocol.parse(lines, [type], (map) => {
 				let group: string[] = [];
-				groupingTags.forEach((groupingTag) => group.push(map.get(groupingTag)));
+				groupingTags.forEach((groupingTag) => group.push(map.get(groupingTag) || ''));
 				let groupString = JSON.stringify(group);
 				if (!tagsGroupedByString.has(groupString)) {
 					tagsGroupedByString.set(groupString, []);
 				}
-				tagsGroupedByString.get(groupString).push(map.get(type));
+				if (map.has(type)) {
+					tagsGroupedByString.get(groupString)!.push(map.get(type)!);
+				}
 			});
 			let groupedTags = new Map<string[], string[]>();
 			tagsGroupedByString.forEach((tags, groupString) => {

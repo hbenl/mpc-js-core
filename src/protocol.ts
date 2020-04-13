@@ -21,7 +21,7 @@ export class MPDProtocol extends EventEmitter {
 	/**
 	 * The version (major, minor, patch) of the connected daemon
 	 */
-	mpdVersion: [number, number, number];
+	mpdVersion?: [number, number, number];
 
 	get isReady() { return this.ready; }
 
@@ -54,7 +54,7 @@ export class MPDProtocol extends EventEmitter {
 		this.queuedRequests.forEach((request) => request.reject('Disconnected'));
 
 		this._connection.disconnect();
-		this._connection = null;
+		this._connection = undefined;
 		this.ready = false;
 		this.idle = false;
 		this.runningRequests = [];
@@ -111,6 +111,9 @@ export class MPDProtocol extends EventEmitter {
 	}
 
 	private enqueueRequest(mpdRequest: MPDRequest) {
+
+		if (!this._connection) throw new Error('Not connected');
+
 		this.queuedRequests.push(mpdRequest);
 		if (this.idle) {
 			this._connection.send('noidle\n');
@@ -134,13 +137,13 @@ export class MPDProtocol extends EventEmitter {
 			var line = lines[i];
 			if ((line == 'list_OK') || (line == 'OK')) {
 				if (this.runningRequests.length > 0) {
-					var req = this.runningRequests.shift();
+					var req = this.runningRequests.shift()!;
 					req.resolve(this.receivedLines);
 					this.receivedLines = [];
 				}
 			} else if (stringStartsWith(line, 'ACK [')) {
 				if (this.runningRequests.length > 0) {
-					var req = this.runningRequests.shift();
+					var req = this.runningRequests.shift()!;
 					var match = MPDProtocol.failureRegExp.exec(line);
 					if (match != null) {
 						var mpdError: MPDError = { errorCode: Number(match[1]), errorMessage: match[2] };
@@ -180,11 +183,14 @@ export class MPDProtocol extends EventEmitter {
 			});
 			commandString += 'command_list_end\n';
 		}
-		this._connection.send(commandString);
+		this._connection!.send(commandString);
 	}
 
 	private initialCallback(msg: string) {
+
 		var match = /^OK MPD ([0-9]+)\.([0-9]+)\.([0-9]+)/.exec(msg);
+		if (!match) throw new Error(`Received unexpected initial message from mpd: '${msg}'`);
+
 		this.mpdVersion = [ Number(match[1]), Number(match[2]), Number(match[3]) ];
 		this.emit('ready');
 	}

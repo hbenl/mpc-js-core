@@ -1,3 +1,5 @@
+import { getOptionalDate } from '../util';
+
 /**
  * The types of objects in the music database
  */
@@ -9,8 +11,17 @@ export declare type DirectoryEntryType = 'file' | 'song' | 'playlist' | 'directo
 export class DirectoryEntry {
 
 	path: string;
-	lastModified: Date;
+	lastModified?: Date;
 	entryType: DirectoryEntryType;
+
+	constructor(valueMap: Map<string, string>, pathKey: string, entryType: DirectoryEntryType) {
+
+		if (!valueMap.has(pathKey)) throw new Error('Path not found for DirectoryEntry object');
+
+		this.entryType = entryType;
+		this.path = valueMap.get(pathKey)!;
+		this.lastModified = getOptionalDate(valueMap,'Last-Modified');
+	}
 
 	static fromValueMap(valueMap: Map<string, string>, withMetadata = true): DirectoryEntry {
 		if (valueMap.get('file')) {
@@ -23,6 +34,9 @@ export class DirectoryEntry {
 			return new Directory(valueMap);
 		} else if (valueMap.get('playlist')) {
 			return new Playlist(valueMap);
+		} else {
+			const keys = [ ...valueMap.keys() ].map(key => `'${key}'`).join(', ');
+			throw new Error(`Couldn't determine type of directory entry with keys ${keys}`)
 		}
 	}
 
@@ -34,48 +48,42 @@ export class DirectoryEntry {
 
 export class File extends DirectoryEntry {
 
-	entryType: 'file';
-	size: number;
+	entryType!: 'file';
+	size?: number;
 
 	constructor(valueMap: Map<string, string>) {
-		super();
-		this.entryType = 'file';
-		this.path = valueMap.get('file');
-		this.lastModified = new Date(valueMap.get('Last-Modified'));
-		this.size = Number(valueMap.get('size'));
+		super(valueMap, 'file', 'file');
+		this.size = valueMap.has('size') ? Number(valueMap.get('size')) : undefined;
 	}
 }
 
 export class Song extends DirectoryEntry {
 
-	entryType: 'song';
-	title: string;
-	name: string;
-	artist: string;
-	artistSort: string;
-	composer: string;
-	performer: string;
-	album: string;
-	albumSort: string;
-	albumArtist: string;
-	albumArtistSort: string;
-	track: string;
-	disc: string;
-	date: string;
-	genre: string;
-	comment: string;
-	musicBrainzArtistId: string;
-	musicBrainzAlbumId: string;
-	musicBrainzAlbumArtistId: string;
-	musicBrainzTrackId: string;
-	musicBrainzReleaseTrackId: string;
-	duration: number;
+	entryType!: 'song';
+	title?: string;
+	name?: string;
+	artist?: string;
+	artistSort?: string;
+	composer?: string;
+	performer?: string;
+	album?: string;
+	albumSort?: string;
+	albumArtist?: string;
+	albumArtistSort?: string;
+	track?: string;
+	disc?: string;
+	date?: string;
+	genre?: string;
+	comment?: string;
+	musicBrainzArtistId?: string;
+	musicBrainzAlbumId?: string;
+	musicBrainzAlbumArtistId?: string;
+	musicBrainzTrackId?: string;
+	musicBrainzReleaseTrackId?: string;
+	duration?: number;
 
 	constructor(valueMap: Map<string, string>) {
-		super();
-		this.entryType = 'song';
-		this.path = valueMap.get('file');
-		this.lastModified = new Date(valueMap.get('Last-Modified'));
+		super(valueMap, 'file', 'song');
 		this.title = valueMap.get('Title');
 		this.name =  valueMap.get('Name');
 		this.artist = valueMap.get('Artist');
@@ -96,31 +104,25 @@ export class Song extends DirectoryEntry {
 		this.musicBrainzAlbumArtistId = valueMap.get('MUSICBRAINZ_ALBUMARTISTID');
 		this.musicBrainzTrackId = valueMap.get('MUSICBRAINZ_TRACKID');
 		this.musicBrainzReleaseTrackId = valueMap.get('MUSICBRAINZ_RELEASETRACKID');
-		this.duration = Number(valueMap.get('Time'));
+		this.duration = valueMap.has('Time') ? Number(valueMap.get('Time')) : undefined;
 	}
 }
 
 export class Playlist extends DirectoryEntry {
 
-	entryType: 'playlist';
+	entryType!: 'playlist';
 
 	constructor(valueMap: Map<string, string>) {
-		super();
-		this.entryType = 'playlist';
-		this.path = valueMap.get('playlist');
-		this.lastModified = new Date(valueMap.get('Last-Modified'));
+		super(valueMap, 'playlist', 'playlist');
 	}
 }
 
 export class Directory extends DirectoryEntry {
 
-	entryType: 'directory';
+	entryType!: 'directory';
 
 	constructor(valueMap: Map<string, string>) {
-		super();
-		this.entryType = 'directory';
-		this.path = valueMap.get('directory');
-		this.lastModified = new Date(valueMap.get('Last-Modified'));
+		super(valueMap, 'directory', 'directory');
 	}
 }
 
@@ -130,6 +132,10 @@ export class SongCount {
 	playtime: number;
 
 	constructor(valueMap: Map<string, string>) {
+
+		if (!valueMap.has('songs')) throw new Error('Number of songs not found for SongCount object');
+		if (!valueMap.has('playtime')) throw new Error('Playtime of songs not found for SongCount object');
+
 		this.songs = Number(valueMap.get('songs'));
 		this.playtime = Number(valueMap.get('playtime'));
 	}
@@ -141,6 +147,9 @@ export class GroupedSongCount extends SongCount {
 
 	constructor(valueMap: Map<string, string>, groupingTag: string) {
 		super(valueMap);
-		this.group = valueMap.get(groupingTag);
+
+		if (!valueMap.has(groupingTag)) throw new Error(`'${groupingTag}' not found for GroupedSongCount object`);
+
+		this.group = valueMap.get(groupingTag)!;
 	}
 }

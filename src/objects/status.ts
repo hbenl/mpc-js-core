@@ -1,123 +1,128 @@
+import { getOptionalNumber, getOptionalBoolean, parseOptionalNumber } from '../util';
+
 /**
  * The current status of the player
  */
 export class Status {
 
-	state: 'play' | 'stop' | 'pause';
+	state?: 'play' | 'stop' | 'pause';
 
 	/**
 	 * index of the currently playing or stopped on song within the playlist
 	 */
-	song: number;
+	song?: number;
 
 	/**
 	 * playlist songid of the currently playing or stopped on song
 	 */
-	songId: number;
+	songId?: number;
 
 	/**
 	 * index of the next song within the playlist
 	 */
-	nextSong: number;
+	nextSong?: number;
 
 	/**
 	 * playlist songid of the next song
 	 */
-	nextSongId: number;
+	nextSongId?: number;
 
 	/**
 	 * total time elapsed within the current song in seconds
 	 */
-	elapsed: number;
+	elapsed?: number;
 
 	/**
 	 * duration of the current song in seconds
 	 */
-	duration: number;
+	duration?: number;
 
 	/**
 	 * current bitrate in kbps
 	 */
-	bitRate: number;
+	bitRate?: number;
 
 	/**
 	 *  The format emitted by the decoder plugin during playback, format: "samplerate:bits:channels".
 	 */
-	audio: string;
+	audio?: string;
 
-	sampleRate: number | undefined;
+	sampleRate?: number;
 
-	bitDepth: number | undefined;
+	bitDepth?: number;
 
-	channels: number | undefined;
+	channels?: number;
 
 	/**
 	 * 0-100
 	 */
-	volume: number;
+	volume?: number;
 
 	/**
 	 * crossfade in seconds
 	 */
-	xfade: number;
+	xfade?: number;
 
 	/**
 	 * mixramp threshold in dB
 	 */
-	mixrampdb: number;
+	mixrampdb?: number;
 
 	/**
 	 * mixramp delay in seconds
 	 */
-	mixrampDelay: number;
+	mixrampDelay?: number;
 
 	/**
 	 * 31-bit unsigned integer, the playlist version number
 	 */
-	playlistVersion: number;
+	playlistVersion?: number;
 
-	playlistLength: number;
+	playlistLength?: number;
 
-	repeat: boolean;
+	repeat?: boolean;
 
-	random: boolean;
+	random?: boolean;
 
-	single: boolean;
+	single?: boolean | 'oneshot';
 
-	consume: boolean;
+	consume?: boolean;
 
 	/**
 	 * update job id
 	 */
-	updating: number;
+	updating?: number;
 
-	error: string;
+	error?: string;
 
 	constructor(valueMap: Map<string, string>) {
 		this.state = <'play' | 'stop' | 'pause'>valueMap.get('state');
-		this.song = Number(valueMap.get('song'));
-		this.songId = Number(valueMap.get('songid'));
-		this.nextSong = Number(valueMap.get('nextsong'));
-		this.nextSongId = Number(valueMap.get('nextsongid'));
-		this.elapsed = Number(valueMap.get('elapsed'));
-		this.duration = Number(valueMap.get('duration'));
-		this.bitRate = Number(valueMap.get('bitrate'));
+		this.song = getOptionalNumber(valueMap, 'song');
+		this.songId = getOptionalNumber(valueMap, 'songid');
+		this.nextSong = getOptionalNumber(valueMap, 'nextsong');
+		this.nextSongId = getOptionalNumber(valueMap, 'nextsongid');
+		this.elapsed = getOptionalNumber(valueMap, 'elapsed');
+		this.duration = getOptionalNumber(valueMap, 'duration');
+		this.bitRate = getOptionalNumber(valueMap, 'bitrate');
 		this.audio = valueMap.get('audio');
 		let splitAudio = this.audio ? this.audio.split(':') : [];
-		this.sampleRate = Number(splitAudio[0]) || undefined;
-		this.bitDepth = Number(splitAudio[1]) || undefined;
-		this.channels = Number(splitAudio[2]) || undefined;
-		this.volume = Number(valueMap.get('volume'));
-		this.xfade = Number(valueMap.get('xfade'));
-		this.mixrampdb = Number(valueMap.get('mixrampdb'));
-		this.mixrampDelay = Number(valueMap.get('mixrampdelay'));
-		this.playlistVersion = Number(valueMap.get('playlist'));
-		this.playlistLength = Number(valueMap.get('playlistlength'));
-		this.repeat = Boolean(Number(valueMap.get('repeat')));
-		this.random = Boolean(Number(valueMap.get('random')));
-		this.single = Boolean(Number(valueMap.get('single')));
-		this.consume = Boolean(Number(valueMap.get('consume')));
-		this.updating = Number(valueMap.get('updating_db'));
+		this.sampleRate = parseOptionalNumber(splitAudio[0]);
+		this.bitDepth = parseOptionalNumber(splitAudio[1]);
+		this.channels = parseOptionalNumber(splitAudio[2]);
+		this.volume = getOptionalNumber(valueMap, 'volume');
+		this.xfade = getOptionalNumber(valueMap, 'xfade');
+		this.mixrampdb = getOptionalNumber(valueMap, 'mixrampdb');
+		this.mixrampDelay = getOptionalNumber(valueMap, 'mixrampdelay');
+		this.playlistVersion = getOptionalNumber(valueMap, 'playlist');
+		this.playlistLength = getOptionalNumber(valueMap, 'playlistlength');
+		this.repeat = getOptionalBoolean(valueMap, 'repeat');
+		this.random = getOptionalBoolean(valueMap, 'random');
+		const singleString = valueMap.get('single');
+		if (singleString !== undefined) {
+			this.single = (singleString === 'oneshot') ? 'oneshot' : Boolean(Number(singleString));
+		}
+		this.consume = getOptionalBoolean(valueMap, 'consume');
+		this.updating = getOptionalNumber(valueMap, 'updating_db');
 		this.error = valueMap.get('error');
 	}
 }

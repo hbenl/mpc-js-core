@@ -41,7 +41,7 @@ export class ClientToClientCommands {
 				if (!messagesPerChannel.has(channel)) {
 					messagesPerChannel.set(channel, []);
 				}
-				messagesPerChannel.get(channel).push(message);
+				messagesPerChannel.get(channel)!.push(message);
 			}
 			return messagesPerChannel;
 		});
