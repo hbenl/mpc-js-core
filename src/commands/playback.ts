@@ -16,7 +16,7 @@ export class PlaybackCommands {
 	}
 
 	/**
-	 * Begins playing the playlist at song with the given songid.
+	 * Begins playing the playlist at song with the given songId.
 	 */
 	playId(songId: number) {
 		let cmd = 'playid';
@@ -84,5 +84,4 @@ export class PlaybackCommands {
 	stop(): Promise<void> {
 		return this.protocol.sendCommand('stop').then(() => {});
 	}
-
 }

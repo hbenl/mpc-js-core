@@ -5,6 +5,11 @@ import { getOptionalNumber, getOptionalBoolean, parseOptionalNumber } from '../u
  */
 export class Status {
 
+	/**
+	 * the name of the current partition
+	 */
+	partition?: string;
+
 	state?: 'play' | 'stop' | 'pause';
 
 	/**
@@ -78,6 +83,9 @@ export class Status {
 	 */
 	playlistVersion?: number;
 
+	/**
+	 * integer, the length of the playlist
+	 */
 	playlistLength?: number;
 
 	repeat?: boolean;
@@ -96,6 +104,7 @@ export class Status {
 	error?: string;
 
 	constructor(valueMap: Map<string, string>) {
+		this.partition = valueMap.get('partition');
 		this.state = <'play' | 'stop' | 'pause'>valueMap.get('state');
 		this.song = getOptionalNumber(valueMap, 'song');
 		this.songId = getOptionalNumber(valueMap, 'songid');

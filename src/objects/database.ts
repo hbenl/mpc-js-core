@@ -60,26 +60,125 @@ export class File extends DirectoryEntry {
 export class Song extends DirectoryEntry {
 
 	entryType!: 'song';
+
+	/**
+	 * the song title
+	 */
 	title?: string;
+
+	/**
+	 * a name for this song. This is not the song title. The exact meaning of this tag is not well-defined.
+	 * It is often used by badly configured internet radio stations with broken tags to squeeze both
+	 * the artist name and the song title in one tag
+	 */
 	name?: string;
+
+	/**
+	 * the artist name. Its meaning is not well-defined; see “composer” and “performer” for more specific tags
+	 */
 	artist?: string;
+
+	/**
+	 * same as artist, but for sorting. This usually omits prefixes such as “The”
+	 */
 	artistSort?: string;
+
+	/**
+	 * the artist who composed the song
+	 */
 	composer?: string;
+
+	/**
+	 * the artist who performed the song
+	 */
 	performer?: string;
+
+	/**
+	 * the album name
+	 */
 	album?: string;
+
+	/**
+	 * same as album, but for sorting
+	 */
 	albumSort?: string;
+
+	/**
+	 * on multi-artist albums, this is the artist name which shall be used for the whole album.
+	 * The exact meaning of this tag is not well-defined
+	 */
 	albumArtist?: string;
+
+	/**
+	 * same as albumArtist, but for sorting
+	 */
 	albumArtistSort?: string;
+
+	/**
+	 * the decimal track number within the album
+	 */
 	track?: string;
+
+	/**
+	 * the decimal disc number in a multi-disc album
+	 */
 	disc?: string;
+
+	/**
+	 * the name of the label or publisher
+	 */
+	label?: string;
+
+	/**
+	 * the song’s release date. This is usually a 4-digit year
+	 */
 	date?: string;
+
+	originalDate?: string;
+
+	/**
+	 * the music genre
+	 */
 	genre?: string;
+
+	/**
+	 * a human-readable comment about this song. The exact meaning of this tag is not well-defined
+	 */
 	comment?: string;
+
+	/**
+	 * the artist id in the MusicBrainz database
+	 */
 	musicBrainzArtistId?: string;
+
+	/**
+	 * the album id in the MusicBrainz database
+	 */
 	musicBrainzAlbumId?: string;
+
+	/**
+	 * the album artist id in the MusicBrainz database
+	 */
 	musicBrainzAlbumArtistId?: string;
+
+	/**
+	 * the track id in the MusicBrainz database
+	 */
 	musicBrainzTrackId?: string;
+
+	/**
+	 * the release track id in the MusicBrainz database
+	 */
 	musicBrainzReleaseTrackId?: string;
+
+	/**
+	 * the work id in the MusicBrainz database
+	 */
+	musicBrainzWorkId?: string;
+
+	/**
+	 * the duration of the song in seconds; may contain a fractional part
+	 */
 	duration?: number;
 
 	constructor(valueMap: Map<string, string>) {
@@ -96,7 +195,9 @@ export class Song extends DirectoryEntry {
 		this.albumArtistSort = valueMap.get('AlbumArtistSort');
 		this.track = valueMap.get('Track');
 		this.disc = valueMap.get('Disc');
+		this.label = valueMap.get('Label');
 		this.date = valueMap.get('Date');
+		this.originalDate = valueMap.get('OriginalDate');
 		this.genre = valueMap.get('Genre');
 		this.comment = valueMap.get('Comment');
 		this.musicBrainzArtistId = valueMap.get('MUSICBRAINZ_ARTISTID');
@@ -104,6 +205,7 @@ export class Song extends DirectoryEntry {
 		this.musicBrainzAlbumArtistId = valueMap.get('MUSICBRAINZ_ALBUMARTISTID');
 		this.musicBrainzTrackId = valueMap.get('MUSICBRAINZ_TRACKID');
 		this.musicBrainzReleaseTrackId = valueMap.get('MUSICBRAINZ_RELEASETRACKID');
+		this.musicBrainzWorkId = valueMap.get('MUSICBRAINZ_WORKID');
 		this.duration = valueMap.has('Time') ? Number(valueMap.get('Time')) : undefined;
 	}
 }

@@ -26,8 +26,8 @@ export class PlaybackOptionsCommands {
 	 * Sets single state. When single is activated, playback is stopped after current song,
 	 * or song is repeated if the 'repeat' mode is enabled.
 	 */
-	setSingle(single: boolean): Promise<void> {
-		let cmd = `single ${single ? 1 : 0}`;
+	setSingle(single: boolean | 'oneshot'): Promise<void> {
+		let cmd = `single ${(single === 'oneshot') ? 'oneshot' : (single ? 1 : 0)}`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 

@@ -7,31 +7,33 @@ export class DatabaseCommands {
 
 	/**
 	 * Counts the number of songs and their total playtime in the database that match exactly.
+	 * `filter` is either a filter expression as described
+	 * [here](https://www.musicpd.org/doc/html/protocol.html#filter-syntax)
+	 * or an array of tuples containing a tag and the value that it should match.
 	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	count(tagsAndNeedles: [string, string][]): Promise<SongCount> {
+	count(filter: string | [string, string][]): Promise<SongCount> {
 		let cmd = 'count';
-		tagsAndNeedles.forEach((tagAndNeedle) => {
-			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, [], (valueMap) => new SongCount(valueMap))[0]);
 	}
 
 	/**
 	 * Counts the number of songs and their total playtime in the database that match exactly.
+	 * `filter` is either a filter expression as described
+	 * [here](https://www.musicpd.org/doc/html/protocol.html#filter-syntax)
+	 * or an array of tuples containing a tag and the value that it should match.
 	 * The results are grouped by tag `groupingTag` (e.g. 'Artist', 'Album', 'Date', 'Genre')
 	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	countGrouped(tagsAndNeedles: [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
+	countGrouped(filter: string | [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
 		let cmd = 'count';
-		tagsAndNeedles.forEach((tagAndNeedle) => {
-			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		cmd += ` group ${groupingTag}`;
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, [groupingTag], 
@@ -39,22 +41,23 @@ export class DatabaseCommands {
 	}
 
 	/**
-	 * Finds songs in the database that match exactly. `type` can be any tag supported by MPD,
-	 * or one of the special parameters:
+	 * Finds songs in the database that match exactly.
+	 * `start` and `end` can be used to query only a portion of the real response.
+	 * `filter` is either a filter expression as described
+	 * [here](https://www.musicpd.org/doc/html/protocol.html#filter-syntax)
+	 * or an array of tuples containing a tag or one of the special parameters listed below
+	 * and the value that it should match. Supported special parameters are:
 	 * * 'any' checks all tag values
 	 * * 'file' checks the full path (relative to the music directory)
 	 * * 'base' restricts the search to songs in the given directory (also relative to the music directory)
-	 * * 'modified-since' compares the file's time stamp with the given value (ISO 8601 or UNIX time stamp) 
-	 * `start` and `end` can be used to query only a portion of the real response.
+	 * * 'modified-since' compares the file's time stamp with the given value (ISO 8601 or UNIX time stamp)
 	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	find(typesAndNeedles: [string, string][], start?: number, end?: number): Promise<Song[]> {
+	find(filter: string | [string, string][], start?: number, end?: number): Promise<Song[]> {
 		let cmd = 'find';
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		if ((typeof start === 'number') && (typeof end === 'number')) {
 			cmd += ` window ${start}:${end}`;
 		}
@@ -67,11 +70,9 @@ export class DatabaseCommands {
 	 * Finds songs in the database that match exactly and adds them to the current playlist.
 	 * Parameters have the same meaning as for `find()`.
 	 */
-	findAdd(typesAndNeedles: [string, string][]): Promise<void> {
+	findAdd(filter: string | [string, string][]): Promise<void> {
 		let cmd = 'findadd';
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -79,11 +80,9 @@ export class DatabaseCommands {
 	 * Searches for any song that matches. Parameters have the same meaning as for `find()`,
 	 * except that the search is a case insensitive substring search.
 	 */
-	search(typesAndNeedles: [string, string][], start?: number, end?: number): Promise<Song[]> {
+	search(filter: string | [string, string][], start?: number, end?: number): Promise<Song[]> {
 		let cmd = 'search';
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		if ((typeof start === 'number') && (typeof end === 'number')) {
 			cmd += ` window ${start}:${end}`;
 		}
@@ -97,11 +96,9 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAdd(typesAndNeedles: [string, string][]): Promise<void> {
+	searchAdd(filter: string | [string, string][]): Promise<void> {
 		let cmd = 'searchadd';
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -111,11 +108,9 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAddPlaylist(name: string, typesAndNeedles: [string, string][]): Promise<void> {
+	searchAddPlaylist(name: string, filter: string | [string, string][]): Promise<void> {
 		let cmd = `searchaddpl ${name}`;
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -184,17 +179,15 @@ export class DatabaseCommands {
 
 	/**
 	 * Lists unique tags values of the specified type. `type` can be any tag supported by MPD
-	 * or 'file'. `typesAndNeedles` specifies a filter like the one in `find()`.
+	 * or 'file'. `filter` specifies a filter like the one in `find()`.
 	 * `groupingTags` may be used to group the results by one or more tags.
 	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	list(type: string, typesAndNeedles: [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
+	list(type: string, filter: string | [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
 		let cmd = `list ${type}`;
-		typesAndNeedles.forEach((typeAndNeedle) => {
-			cmd += ` ${typeAndNeedle[0]} "${typeAndNeedle[1]}"`;
-		});
+		cmd = addFilter(cmd, filter);
 		groupingTags.forEach((tag) => {
 			cmd += ` group ${tag}`;
 		});
@@ -258,4 +251,15 @@ export class DatabaseCommands {
 		}
 		return this.protocol.sendCommand(cmd).then((lines) => Number(lines[0].substring(13)));
 	}
+}
+
+function addFilter(cmd: string, filter: string | [string, string][]): string {
+	if (typeof filter === 'string') {
+		cmd += ` ${filter}`;
+	} else {
+		filter.forEach((tagAndNeedle) => {
+			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
+		});
+	}
+	return cmd;
 }
