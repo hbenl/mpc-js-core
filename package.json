@@ -35,8 +35,8 @@
     "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
-    "rimraf": "^2.6.3",
-    "typedoc": "^0.14.2",
-    "typescript": "~3.5.3"
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.17.4",
+    "typescript": "~3.8.3"
   }
 }
