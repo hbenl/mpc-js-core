@@ -1,7 +1,7 @@
 import { MPDProtocol } from './protocol';
 import { StatusCommands, PlaybackCommands, PlaybackOptionsCommands, CurrentPlaylistCommands,
 	StoredPlaylistsCommands, DatabaseCommands, MountCommands, StickerCommands, ConnectionCommands,
-	OutputDeviceCommands, ReflectionCommands, ClientToClientCommands } from './commands/index';
+	PartitionCommands, OutputDeviceCommands, ReflectionCommands, ClientToClientCommands } from './commands/index';
 
 export class MPCCore extends MPDProtocol {
 
@@ -14,6 +14,7 @@ export class MPCCore extends MPDProtocol {
 	readonly mounts: MountCommands;
 	readonly stickers: StickerCommands;
 	readonly connection: ConnectionCommands;
+	readonly partition: PartitionCommands;
 	readonly outputDevices: OutputDeviceCommands;
 	readonly reflection: ReflectionCommands;
 	readonly clientToClient: ClientToClientCommands;
@@ -29,6 +30,7 @@ export class MPCCore extends MPDProtocol {
 		this.mounts = new MountCommands(this);
 		this.stickers = new StickerCommands(this);
 		this.connection = new ConnectionCommands(this);
+		this.partition = new PartitionCommands(this);
 		this.outputDevices = new OutputDeviceCommands(this);
 		this.reflection = new ReflectionCommands(this);
 		this.clientToClient = new ClientToClientCommands(this);

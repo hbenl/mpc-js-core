@@ -7,6 +7,7 @@ export { DatabaseCommands } from './database';
 export { MountCommands } from './mount';
 export { StickerCommands } from './sticker';
 export { ConnectionCommands } from './connection';
+export { PartitionCommands } from './partition';
 export { OutputDeviceCommands } from './outputDevice';
 export { ReflectionCommands } from './reflection';
 export { ClientToClientCommands } from './clientToClient';
