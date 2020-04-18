@@ -1,6 +1,7 @@
 import { MPDProtocol } from '../protocol';
 import { Decoder } from '../objects/decoder';
 import { stringStartsWith } from '../util';
+import { tagTypes } from './connection';
 
 export class ReflectionCommands {
 
@@ -34,11 +35,11 @@ export class ReflectionCommands {
 	}
 
 	/**
-	 * Shows a list of available song metadata.
+	 * This method is identical to the method by the same name in the ConnectionCommands class.
+	 * It is only provided here for backward compatibility.
 	 */
 	tagTypes(): Promise<string[]> {
-		return this.protocol.sendCommand('tagtypes').then(
-			(lines) => lines.map((line) => line.substring(9)));
+		return tagTypes(this.protocol);
 	}
 
 	/**
