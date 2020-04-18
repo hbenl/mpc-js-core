@@ -36,4 +36,13 @@ export class OutputDeviceCommands {
 		let cmd = `toggleoutput ${id}`;
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
+
+	/**
+	 * Set a runtime attribute. These are specific to the output plugin, and
+	 * supported values are shown in the result of the `outputs` command.
+	 */
+	async outputSet(id: number, name: string, value: string): Promise<void> {
+		let cmd = `outputset ${id} "${name}" "${value}"`;
+		await this.protocol.sendCommand(cmd);
+	}
 }
