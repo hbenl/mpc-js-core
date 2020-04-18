@@ -114,7 +114,7 @@ export class Status {
 		this.duration = getOptionalNumber(valueMap, 'duration');
 		this.bitRate = getOptionalNumber(valueMap, 'bitrate');
 		this.audio = valueMap.get('audio');
-		let splitAudio = this.audio ? this.audio.split(':') : [];
+		const splitAudio = this.audio ? this.audio.split(':') : [];
 		this.sampleRate = parseOptionalNumber(splitAudio[0]);
 		this.bitDepth = parseOptionalNumber(splitAudio[1]);
 		this.channels = parseOptionalNumber(splitAudio[2]);

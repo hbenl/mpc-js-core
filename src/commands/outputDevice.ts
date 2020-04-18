@@ -8,33 +8,33 @@ export class OutputDeviceCommands {
 	/**
 	 * Returns information about all outputs.
 	 */
-	outputs(): Promise<OutputDevice[]> {
-		return this.protocol.sendCommand('outputs').then(
-			(lines) => this.protocol.parse(lines, ['outputid'], (valueMap) => new OutputDevice(valueMap)));
+	async outputs(): Promise<OutputDevice[]> {
+		const lines = await this.protocol.sendCommand('outputs');
+		return this.protocol.parse(lines, ['outputid'], valueMap => new OutputDevice(valueMap));
 	}
 
 	/**
 	 * Turns an output on.
 	 */
-	enableOutput(id: number): Promise<void> {
-		let cmd = `enableoutput ${id}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async enableOutput(id: number): Promise<void> {
+		const cmd = `enableoutput ${id}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Turns an output off.
 	 */
-	disableOutput(id: number): Promise<void> {
-		let cmd = `disableoutput ${id}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async disableOutput(id: number): Promise<void> {
+		const cmd = `disableoutput ${id}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Turns an output on or off, depending on the current state.
 	 */
-	toggleOutput(id: number): Promise<void> {
-		let cmd = `toggleoutput ${id}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async toggleOutput(id: number): Promise<void> {
+		const cmd = `toggleoutput ${id}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
@@ -42,7 +42,7 @@ export class OutputDeviceCommands {
 	 * supported values are shown in the result of the `outputs` command.
 	 */
 	async outputSet(id: number, name: string, value: string): Promise<void> {
-		let cmd = `outputset ${id} "${name}" "${value}"`;
+		const cmd = `outputset ${id} "${name}" "${value}"`;
 		await this.protocol.sendCommand(cmd);
 	}
 }

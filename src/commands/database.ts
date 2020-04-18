@@ -14,11 +14,11 @@ export class DatabaseCommands {
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	count(filter: string | [string, string][]): Promise<SongCount> {
+	async count(filter: string | [string, string][]): Promise<SongCount> {
 		let cmd = 'count';
 		cmd = addFilter(cmd, filter);
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [], (valueMap) => new SongCount(valueMap))[0]);
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, [], valueMap => new SongCount(valueMap))[0];
 	}
 
 	/**
@@ -31,13 +31,12 @@ export class DatabaseCommands {
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	countGrouped(filter: string | [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
+	async countGrouped(filter: string | [string, string][], groupingTag: string): Promise<GroupedSongCount[]> {
 		let cmd = 'count';
 		cmd = addFilter(cmd, filter);
 		cmd += ` group ${groupingTag}`;
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [groupingTag], 
-			(valueMap) => new GroupedSongCount(valueMap, groupingTag)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, [groupingTag], valueMap => new GroupedSongCount(valueMap, groupingTag));
 	}
 
 	/**
@@ -61,40 +60,38 @@ export class DatabaseCommands {
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	find(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
+	async find(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
 		let cmd = 'find';
 		cmd = addFilter(cmd, filter);
 		cmd = addSort(cmd, sort);
 		cmd = addWindow(cmd, start, end);
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file'], valueMap => <Song>DirectoryEntry.fromValueMap(valueMap, true));
 	}
 
 	/**
 	 * Finds songs in the database that match exactly and adds them to the current playlist.
 	 * Parameters have the same meaning as for `find()`.
 	 */
-	findAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
+	async findAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = 'findadd';
 		cmd = addFilter(cmd, filter);
 		cmd = addSort(cmd, sort);
 		cmd = addWindow(cmd, start, end);
-		return this.protocol.sendCommand(cmd).then(() => {});
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Searches for any song that matches. Parameters have the same meaning as for `find()`,
 	 * except that the search is a case insensitive substring search.
 	 */
-	search(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
+	async search(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
 		let cmd = 'search';
 		cmd = addFilter(cmd, filter);
 		cmd = addSort(cmd, sort);
 		cmd = addWindow(cmd, start, end);
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file'], 
-			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file'], valueMap => <Song>DirectoryEntry.fromValueMap(valueMap, true));
 	}
 
 	/**
@@ -102,12 +99,12 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
+	async searchAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = 'searchadd';
 		cmd = addFilter(cmd, filter);
 		cmd = addSort(cmd, sort);
 		cmd = addWindow(cmd, start, end);
-		return this.protocol.sendCommand(cmd).then(() => {});
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
@@ -116,12 +113,12 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAddPlaylist(name: string, filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
+	async searchAddPlaylist(name: string, filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = `searchaddpl ${name}`;
 		cmd = addFilter(cmd, filter);
 		cmd = addSort(cmd, sort);
 		cmd = addWindow(cmd, start, end);
-		return this.protocol.sendCommand(cmd).then(() => {});
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
@@ -130,14 +127,13 @@ export class DatabaseCommands {
 	 * storage plugins. For example, "smb://SERVER" returns a list of all shares on the given
 	 * SMB/CIFS server; "nfs://servername/path" obtains a directory listing from the NFS server. 
 	 */
-	listFiles(uri?: string): Promise<(File | Directory)[]> {
+	async listFiles(uri?: string): Promise<(File | Directory)[]> {
 		let cmd = 'listfiles';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file', 'directory'], 
-			(valueMap) => <File | Directory>DirectoryEntry.fromValueMap(valueMap, false)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file', 'directory'], valueMap => <File | Directory>DirectoryEntry.fromValueMap(valueMap, false));
 	}
 
 	/**
@@ -147,14 +143,13 @@ export class DatabaseCommands {
 	 * with "http://" or "smb://"). Clients that are connected via UNIX domain socket may use this
 	 * command to read the tags of an arbitrary local file (`uri` is an absolute path).
 	 */
-	listInfo(uri?: string): Promise<(Song | Playlist | Directory)[]> {
+	async listInfo(uri?: string): Promise<(Song | Playlist | Directory)[]> {
 		let cmd = 'lsinfo';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file', 'playlist', 'directory'], 
-			(valueMap) => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file', 'playlist', 'directory'], valueMap => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true));
 	}
 
 	/**
@@ -162,14 +157,13 @@ export class DatabaseCommands {
 	 * client-side copy of MPD's database. That is fragile and adds huge overhead.
 	 * It will break with large databases. Instead, query MPD whenever you need something.
 	 */
-	listAll(uri?: string): Promise<string[]> {
+	async listAll(uri?: string): Promise<string[]> {
 		let cmd = 'listall';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then((lines) => lines.map((line) => 
-			line.substring(line.indexOf(':') + 2)
-		));
+		const lines = await this.protocol.sendCommand(cmd);
+		return lines.map(line => line.substring(line.indexOf(':') + 2));
 	}
 
 	/**
@@ -177,14 +171,13 @@ export class DatabaseCommands {
 	 * manage a client-side copy of MPD's database. That is fragile and adds huge overhead.
 	 * It will break with large databases. Instead, query MPD whenever you need something.
 	 */
-	listAllInfo(uri?: string): Promise<(Song | Playlist | Directory)[]> {
+	async listAllInfo(uri?: string): Promise<(Song | Playlist | Directory)[]> {
 		let cmd = 'listallinfo';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file', 'playlist', 'directory'], 
-			(valueMap) => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file', 'playlist', 'directory'], valueMap => <Song | Playlist | Directory>DirectoryEntry.fromValueMap(valueMap, true));
 	}
 
 	/**
@@ -195,32 +188,31 @@ export class DatabaseCommands {
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	list(type: string, filter: string | [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
+	async list(type: string, filter: string | [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
 		let cmd = `list ${type}`;
 		cmd = addFilter(cmd, filter);
-		groupingTags.forEach((tag) => {
+		groupingTags.forEach(tag => {
 			cmd += ` group ${tag}`;
 		});
-		return this.protocol.sendCommand(cmd).then((lines) => {
-			let tagsGroupedByString = new Map<string, string[]>();
-			this.protocol.parse(lines, [type], (map) => {
-				let group: string[] = [];
-				groupingTags.forEach((groupingTag) => group.push(map.get(groupingTag) || ''));
-				let groupString = JSON.stringify(group);
-				if (!tagsGroupedByString.has(groupString)) {
-					tagsGroupedByString.set(groupString, []);
-				}
-				if (map.has(type)) {
-					tagsGroupedByString.get(groupString)!.push(map.get(type)!);
-				}
-			});
-			let groupedTags = new Map<string[], string[]>();
-			tagsGroupedByString.forEach((tags, groupString) => {
-				let group = JSON.parse(groupString);
-				groupedTags.set(group, tags);
-			});
-			return groupedTags;
+		const lines = await this.protocol.sendCommand(cmd);
+		const tagsGroupedByString = new Map<string, string[]>();
+		this.protocol.parse(lines, [type], map => {
+			const group: string[] = [];
+			groupingTags.forEach(groupingTag => group.push(map.get(groupingTag) || ''));
+			const groupString = JSON.stringify(group);
+			if (!tagsGroupedByString.has(groupString)) {
+				tagsGroupedByString.set(groupString, []);
+			}
+			if (map.has(type)) {
+				tagsGroupedByString.get(groupString)!.push((map.get(type)!));
+			}
 		});
+		const groupedTags = new Map<string[], string[]>();
+		tagsGroupedByString.forEach((tags, groupString_1) => {
+			const group_1 = JSON.parse(groupString_1);
+			groupedTags.set(group_1, tags);
+		});
+		return groupedTags;
 	}
 
 	/**
@@ -231,10 +223,10 @@ export class DatabaseCommands {
 	 * The meaning of these depends on the codec, and not all decoder plugins support it.
 	 * For example, on Ogg files, this lists the Vorbis comments.
 	 */
-	readComments(uri: string): Promise<Map<string, string>> {
-		let cmd = `readcomments "${uri}"`;
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, [], (map) => map)[0]);
+	async readComments(uri: string): Promise<Map<string, string>> {
+		const cmd = `readcomments "${uri}"`;
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, [], valueMap => valueMap)[0];
 	}
 
 	/**
@@ -243,23 +235,25 @@ export class DatabaseCommands {
 	 * is updated. Returns a positive number identifying the update job. You can read the current
 	 * job id in the status response. 
 	 */
-	update(uri?: string): Promise<number> {
+	async update(uri?: string): Promise<number> {
 		let cmd = 'update';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then((lines) => Number(lines[0].substring(13)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return Number(lines[0].substring(13));
 	}
 
 	/**
 	 * Same as `update()`, but also rescans unmodified files.
 	 */
-	rescan(uri?: string): Promise<number> {
+	async rescan(uri?: string): Promise<number> {
 		let cmd = 'rescan';
 		if (uri) {
 			cmd += ` "${uri}"`;
 		}
-		return this.protocol.sendCommand(cmd).then((lines) => Number(lines[0].substring(13)));
+		const lines = await this.protocol.sendCommand(cmd);
+		return Number(lines[0].substring(13));
 	}
 }
 
@@ -267,7 +261,7 @@ function addFilter(cmd: string, filter: string | [string, string][]): string {
 	if (typeof filter === 'string') {
 		cmd += ` "${filter.replace(/\\/g, '\\\\').replace(/\"/g, '\\\"')}"`;
 	} else {
-		filter.forEach((tagAndNeedle) => {
+		filter.forEach(tagAndNeedle => {
 			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
 		});
 	}

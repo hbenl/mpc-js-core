@@ -23,16 +23,16 @@ export class ConnectionCommands {
 	/**
 	 * This is used for authentication with the server. `password` is simply the plaintext password.
 	 */
-	password(password: string): Promise<void> {
-		let cmd = `password "${password}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async password(password: string): Promise<void> {
+		const cmd = `password "${password}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Does nothing but return "OK".
 	 */
-	ping(): Promise<void> {
-		return this.protocol.sendCommand('ping').then(() => {});
+	async ping(): Promise<void> {
+		await this.protocol.sendCommand('ping');
 	}
 
 	/**
@@ -52,7 +52,7 @@ export class ConnectionCommands {
 	 */
 	async disableTagTypes(names: string[]): Promise<void> {
 		if (names.length < 1) return;
-		let cmd = `tagtypes disable ${names.join(' ')}`;
+		const cmd = `tagtypes disable ${names.join(' ')}`;
 		await this.protocol.sendCommand(cmd);
 	}
 
@@ -62,7 +62,7 @@ export class ConnectionCommands {
 	 */
 	async enableTagTypes(names: string[]): Promise<void> {
 		if (names.length < 1) return;
-		let cmd = `tagtypes enable ${names.join(' ')}`;
+		const cmd = `tagtypes enable ${names.join(' ')}`;
 		await this.protocol.sendCommand(cmd);
 	}
 
@@ -85,5 +85,5 @@ export class ConnectionCommands {
 
 export async function tagTypes(protocol: MPDProtocol): Promise<string[]> {
 	const lines = await protocol.sendCommand('tagtypes');
-	return lines.map((line) => line.substring(9));
+	return lines.map(line => line.substring(9));
 }

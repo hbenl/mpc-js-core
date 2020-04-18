@@ -36,7 +36,7 @@ export class MPDProtocol extends EventEmitter {
 
 		this._connection = connection;
 		return this._connection.connect(
-			(msg) => this.processReceivedMessage(msg),
+			msg => this.processReceivedMessage(msg),
 			(eventName, arg) => this.emit(eventName, arg)
 		);
 	}
@@ -50,8 +50,8 @@ export class MPDProtocol extends EventEmitter {
 			throw new Error('Client isn\'t connected');
 		}
 
-		this.runningRequests.forEach((request) => request.reject('Disconnected'));
-		this.queuedRequests.forEach((request) => request.reject('Disconnected'));
+		this.runningRequests.forEach(request => request.reject('Disconnected'));
+		this.queuedRequests.forEach(request => request.reject('Disconnected'));
 
 		this._connection.disconnect();
 		this._connection = undefined;
@@ -68,7 +68,7 @@ export class MPDProtocol extends EventEmitter {
 	 */	
 	sendCommand(cmd: string): Promise<string[]> {
 		return new Promise<string[]>((resolve, reject) => {
-			var mpdRequest = { cmd, resolve, reject };
+			const mpdRequest = { cmd, resolve, reject };
 			this.enqueueRequest(mpdRequest);
 		});
 	}
@@ -80,21 +80,21 @@ export class MPDProtocol extends EventEmitter {
 	 * @param convert	Converts a key-value Map from the response into the desired target object
 	 */	
 	parse<T>(lines: string[], markers: string[], convert: (valueMap: Map<string, string>) => T): T[] {
-		var result = new Array<T>();
-		var currentValueMap = new Map<string, string>();
-		var lineCount = 0;
+		const result = new Array<T>();
+		let currentValueMap = new Map<string, string>();
+		let lineCount = 0;
 
-		lines.forEach((line) => {
-			var colonIndex = line.indexOf(':');
+		lines.forEach(line => {
+			const colonIndex = line.indexOf(':');
 			if (colonIndex > 0) {
-				var key = line.substring(0, colonIndex);
-				var value = line.substring(colonIndex + 2);
+				const key = line.substring(0, colonIndex);
+				const value = line.substring(colonIndex + 2);
 				if ((lineCount > 0) && markers.some(marker => (marker == key))) {
 					result.push(convert(currentValueMap));
 					currentValueMap = new Map<string, string>();
 				}
 				if (currentValueMap.has(key)) {
-					var multiValue = [currentValueMap.get(key), value].join(';');
+					const multiValue = [currentValueMap.get(key), value].join(';');
 					currentValueMap.set(key, multiValue);
 				}
 				else {
@@ -129,24 +129,24 @@ export class MPDProtocol extends EventEmitter {
 			return;
 		}
 		if (this.receivedLines.length > 0) {
-			var lastPreviousLine = this.receivedLines.pop();
+			const lastPreviousLine = this.receivedLines.pop();
 			msg = lastPreviousLine + msg;
 		}
-		var lines = msg.split('\n');
-		for (var i = 0; i < (lines.length - 1); i++) {
-			var line = lines[i];
+		const lines = msg.split('\n');
+		for (let i = 0; i < (lines.length - 1); i++) {
+			const line = lines[i];
 			if ((line == 'list_OK') || (line == 'OK')) {
 				if (this.runningRequests.length > 0) {
-					var req = this.runningRequests.shift()!;
+					const req = this.runningRequests.shift()!;
 					req.resolve(this.receivedLines);
 					this.receivedLines = [];
 				}
 			} else if (stringStartsWith(line, 'ACK [')) {
 				if (this.runningRequests.length > 0) {
-					var req = this.runningRequests.shift()!;
-					var match = MPDProtocol.failureRegExp.exec(line);
+					const req = this.runningRequests.shift()!;
+					const match = MPDProtocol.failureRegExp.exec(line);
 					if (match != null) {
-						var mpdError: MPDError = { errorCode: Number(match[1]), errorMessage: match[2] };
+						const mpdError: MPDError = { errorCode: Number(match[1]), errorMessage: match[2] };
 						req.reject(mpdError);
 						this.queuedRequests = this.runningRequests.concat(this.queuedRequests);
 						this.runningRequests = [];
@@ -170,15 +170,15 @@ export class MPDProtocol extends EventEmitter {
 			this.queuedRequests = [];
 			this.idle = false;
 		} else {
-			this.runningRequests = [{ cmd: 'idle', resolve: (lines) => this.idleCallback(lines), reject: () => {} }];
+			this.runningRequests = [{ cmd: 'idle', resolve: lines => this.idleCallback(lines), reject: () => {} }];
 			this.idle = true;
 		}
-		var commandString: string;
+		let commandString: string;
 		if (this.runningRequests.length == 1) {
 			commandString = this.runningRequests[0].cmd + '\n';
 		} else {
 			commandString = 'command_list_ok_begin\n';
-			this.runningRequests.forEach((command) => {
+			this.runningRequests.forEach(command => {
 				commandString += command.cmd + '\n';
 			});
 			commandString += 'command_list_end\n';
@@ -188,7 +188,7 @@ export class MPDProtocol extends EventEmitter {
 
 	private initialCallback(msg: string) {
 
-		var match = /^OK MPD ([0-9]+)\.([0-9]+)\.([0-9]+)/.exec(msg);
+		const match = /^OK MPD ([0-9]+)\.([0-9]+)\.([0-9]+)/.exec(msg);
 		if (!match) throw new Error(`Received unexpected initial message from mpd: '${msg}'`);
 
 		this.mpdVersion = [ Number(match[1]), Number(match[2]), Number(match[3]) ];
@@ -197,9 +197,9 @@ export class MPDProtocol extends EventEmitter {
 
 	private idleCallback(lines: string[]) {
 		this.idle = false;
-		var subsystems = lines.map(changed => changed.substring(9));
+		const subsystems = lines.map(changed => changed.substring(9));
 		this.emit('changed', subsystems);
-		subsystems.forEach((subsystem) => this.emit(`changed-${subsystem}`));
+		subsystems.forEach(subsystem => this.emit(`changed-${subsystem}`));
 	}
 }
 

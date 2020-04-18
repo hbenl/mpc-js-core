@@ -10,97 +10,97 @@ export class StoredPlaylistsCommands {
 	 * modification time. To avoid problems due to clock differences between clients and the
 	 * server, clients should not compare this value with their local clock. 
 	 */
-	listPlaylists(): Promise<StoredPlaylist[]> {
-		return this.protocol.sendCommand('listplaylists').then(
-			(lines) => this.protocol.parse(lines, ['playlist'], (valueMap) => new StoredPlaylist(valueMap)));
+	async listPlaylists(): Promise<StoredPlaylist[]> {
+		const lines = await this.protocol.sendCommand('listplaylists');
+		return this.protocol.parse(lines, ['playlist'], valueMap => new StoredPlaylist(valueMap));
 	}
 
 	/**
 	 * Lists the songs in the playlist. Playlist plugins are supported.
 	 */
-	listPlaylist(name: string): Promise<string[]> {
-		let cmd = `listplaylist "${name}"`;
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => lines.map((line) => line.substring(6)));
+	async listPlaylist(name: string): Promise<string[]> {
+		const cmd = `listplaylist "${name}"`;
+		const lines = await this.protocol.sendCommand(cmd);
+		return lines.map(line => line.substring(6));
 	}
 
 	/**
 	 * Lists the songs with metadata in the playlist. Playlist plugins are supported.
 	 */
-	listPlaylistInfo(name: string): Promise<PlaylistItem[]> {
-		let cmd = `listplaylistinfo "${name}"`;
-		return this.protocol.sendCommand(cmd).then(
-			(lines) => this.protocol.parse(lines, ['file'], (valueMap) => new PlaylistItem(valueMap)));
+	async listPlaylistInfo(name: string): Promise<PlaylistItem[]> {
+		const cmd = `listplaylistinfo "${name}"`;
+		const lines = await this.protocol.sendCommand(cmd);
+		return this.protocol.parse(lines, ['file'], valueMap => new PlaylistItem(valueMap));
 	}
 
 	/**
 	 * Loads the playlist into the current queue. Playlist plugins are supported.
 	 * A range may be specified to load only a part of the playlist.
 	 */
-	load(name: string, start?: number, end?: number): Promise<void> {
+	async load(name: string, start?: number, end?: number): Promise<void> {
 		let cmd = `load "${name}"`;
-		if (typeof start === 'number') {
+		if (start !== undefined) {
 			cmd += ` ${start}:`;
-			if (typeof end === 'number') {
+			if (end !== undefined) {
 				cmd += end;
 			}
 		}
-		return this.protocol.sendCommand(cmd).then(() => {});
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Saves the current playlist to `name`.m3u in the playlist directory.
 	 */
-	save(name: string): Promise<void> {
-		let cmd = `save "${name}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async save(name: string): Promise<void> {
+		const cmd = `save "${name}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Adds `uri` to the playlist `name`.m3u. `name`.m3u will be created if it does not exist.
 	 */
-	playlistAdd(name: string, uri: string): Promise<void> {
-		let cmd = `playlistadd "${name}" "${uri}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async playlistAdd(name: string, uri: string): Promise<void> {
+		const cmd = `playlistadd "${name}" "${uri}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Clears the playlist `name`.m3u.
 	 */
-	playlistClear(name: string): Promise<void> {
-		let cmd = `playlistclear "${name}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async playlistClear(name: string): Promise<void> {
+		const cmd = `playlistclear "${name}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Deletes `position` from the playlist `name`.m3u.
 	 */
-	playlistDelete(name: string, position: number): Promise<void> {
-		let cmd = `playlistdelete "${name}" ${position}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async playlistDelete(name: string, position: number): Promise<void> {
+		const cmd = `playlistdelete "${name}" ${position}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Moves the song at position `from` in the playlist `name`.m3u to the position `to`.
 	 */
-	playlistMove(name: string, from: number, to: number): Promise<void> {
-		let cmd = `playlistmove "${name}" ${from} ${to}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async playlistMove(name: string, from: number, to: number): Promise<void> {
+		const cmd = `playlistmove "${name}" ${from} ${to}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Renames the playlist `name`.m3u to `newName`.m3u.
 	 */
-	rename(name: string, newName: string): Promise<void> {
-		let cmd = `rename "${name}" "${newName}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async rename(name: string, newName: string): Promise<void> {
+		const cmd = `rename "${name}" "${newName}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Removes the playlist `name`.m3u from the playlist directory.
 	 */
-	remove(name: string): Promise<void> {
-		let cmd = `rm "${name}"`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async remove(name: string): Promise<void> {
+		const cmd = `rm "${name}"`;
+		await this.protocol.sendCommand(cmd);
 	}
 }

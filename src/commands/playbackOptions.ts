@@ -7,44 +7,44 @@ export class PlaybackOptionsCommands {
 	/**
 	 * Sets volume, the range of volume is 0-100.
 	 */
-	setVolume(volume: number): Promise<void> {
-		let cmd = `setvol ${volume}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setVolume(volume: number): Promise<void> {
+		const cmd = `setvol ${volume}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
-	setRandom(random: boolean): Promise<void> {
-		let cmd = `random ${random ? 1 : 0}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setRandom(random: boolean): Promise<void> {
+		const cmd = `random ${random ? 1 : 0}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
-	setRepeat(repeat: boolean): Promise<void> {
-		let cmd = `repeat ${repeat ? 1 : 0}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setRepeat(repeat: boolean): Promise<void> {
+		const cmd = `repeat ${repeat ? 1 : 0}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Sets single state. When single is activated, playback is stopped after current song,
 	 * or song is repeated if the 'repeat' mode is enabled.
 	 */
-	setSingle(single: boolean | 'oneshot'): Promise<void> {
-		let cmd = `single ${(single === 'oneshot') ? 'oneshot' : (single ? 1 : 0)}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setSingle(single: boolean | 'oneshot'): Promise<void> {
+		const cmd = `single ${(single === 'oneshot') ? 'oneshot' : (single ? 1 : 0)}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Sets consume state. When consume is activated, each song played is removed from playlist.
 	 */
-	setConsume(consume: boolean): Promise<void> {
-		let cmd = `consume ${consume ? 1 : 0}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setConsume(consume: boolean): Promise<void> {
+		const cmd = `consume ${consume ? 1 : 0}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Sets crossfading between songs
 	 */
-	setCrossfade(seconds: number): Promise<void> {
-		let cmd = `crossfade ${seconds}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setCrossfade(seconds: number): Promise<void> {
+		const cmd = `crossfade ${seconds}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
@@ -54,18 +54,18 @@ export class PlaybackOptionsCommands {
 	 * In the absence of mixramp tags * crossfading will be used.
 	 * See [http://sourceforge.net/projects/mixramp]
 	 */
-	setMixrampdb(decibels: number): Promise<void> {
-		let cmd = `mixrampdb ${decibels}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setMixrampdb(decibels: number): Promise<void> {
+		const cmd = `mixrampdb ${decibels}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
 	 * Additional time subtracted from the overlap calculated by mixrampdb.
 	 * A value of null disables MixRamp overlapping and falls back to crossfading.
 	 */
-	setMixrampDelay(seconds: number): Promise<void> {
-		let cmd = `mixrampdelay ${seconds ? seconds : 'nan'}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setMixrampDelay(seconds: number): Promise<void> {
+		const cmd = `mixrampdelay ${seconds ? seconds : 'nan'}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
 	/**
@@ -73,13 +73,13 @@ export class PlaybackOptionsCommands {
 	 * Changing the mode during playback may take several seconds, because the new settings does
 	 * not affect the buffered data. This command triggers the options idle event. 
 	 */
-	setReplayGainMode(mode: 'off' | 'track' | 'album' | 'auto'): Promise<void> {
-		let cmd = `replay_gain_mode ${mode}`;
-		return this.protocol.sendCommand(cmd).then(() => {});
+	async setReplayGainMode(mode: 'off' | 'track' | 'album' | 'auto'): Promise<void> {
+		const cmd = `replay_gain_mode ${mode}`;
+		await this.protocol.sendCommand(cmd);
 	}
 
-	getReplayGainMode(): Promise<'off' | 'track' | 'album' | 'auto'> {
-		return this.protocol.sendCommand('replay_gain_status').then(
-			(lines) => <'off' | 'track' | 'album' | 'auto'>lines[0].substring(18));
+	async getReplayGainMode(): Promise<'off' | 'track' | 'album' | 'auto'> {
+		const lines = await this.protocol.sendCommand('replay_gain_status');
+		return <'off' | 'track' | 'album' | 'auto'>lines[0].substring(18);
 	}
 }
