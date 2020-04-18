@@ -23,6 +23,7 @@ export class PlaylistItem {
 	artist?: string;
 	album?: string;
 	albumArtist?: string;
+	track?: string;
 	date?: string;
 	genre?: string;
 	duration?: number;
@@ -41,9 +42,11 @@ export class PlaylistItem {
 		this.artist = valueMap.get('Artist');
 		this.album = valueMap.get('Album');
 		this.albumArtist = valueMap.get('AlbumArtist');
+		this.track = valueMap.get('Track');
 		this.date = valueMap.get('Date');
 		this.genre = valueMap.get('Genre');
-		this.duration = valueMap.has('Time') ? Number(valueMap.get('Time')) : undefined;
+		const durationString = valueMap.get('duration') || valueMap.get('Time');
+		this.duration = durationString ? Number(durationString) : undefined;
 		this.path = valueMap.get('file');
 		this.lastModified = getOptionalDate(valueMap, 'Last-Modified');
 	}

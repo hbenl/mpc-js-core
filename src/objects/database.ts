@@ -1,4 +1,4 @@
-import { getOptionalDate } from '../util';
+import { getOptionalDate, parseOptionalNumber } from '../util';
 
 /**
  * The types of objects in the music database
@@ -181,6 +181,17 @@ export class Song extends DirectoryEntry {
 	 */
 	duration?: number;
 
+	/**
+	 *  The format emitted by the decoder plugin, format: "samplerate:bits:channels".
+	 */
+	format?: string;
+
+	sampleRate?: number;
+
+	bitDepth?: number;
+
+	channels?: number;
+
 	constructor(valueMap: Map<string, string>) {
 		super(valueMap, 'file', 'song');
 		this.title = valueMap.get('Title');
@@ -206,7 +217,13 @@ export class Song extends DirectoryEntry {
 		this.musicBrainzTrackId = valueMap.get('MUSICBRAINZ_TRACKID');
 		this.musicBrainzReleaseTrackId = valueMap.get('MUSICBRAINZ_RELEASETRACKID');
 		this.musicBrainzWorkId = valueMap.get('MUSICBRAINZ_WORKID');
-		this.duration = valueMap.has('Time') ? Number(valueMap.get('Time')) : undefined;
+		const durationString = valueMap.get('duration') || valueMap.get('Time');
+		this.duration = durationString ? Number(durationString) : undefined;
+		this.format = valueMap.get('format');
+		const splitFormat = this.format ? this.format.split(':') : [];
+		this.sampleRate = parseOptionalNumber(splitFormat[0]);
+		this.bitDepth = parseOptionalNumber(splitFormat[1]);
+		this.channels = parseOptionalNumber(splitFormat[2]);
 	}
 }
 
