@@ -255,7 +255,7 @@ export class DatabaseCommands {
 
 function addFilter(cmd: string, filter: string | [string, string][]): string {
 	if (typeof filter === 'string') {
-		cmd += ` ${filter}`;
+		cmd += ` "${filter.replace(/\\/g, '\\\\').replace(/\"/g, '\\\"')}"`;
 	} else {
 		filter.forEach((tagAndNeedle) => {
 			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
