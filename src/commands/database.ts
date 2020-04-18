@@ -43,6 +43,12 @@ export class DatabaseCommands {
 	/**
 	 * Finds songs in the database that match exactly.
 	 * `start` and `end` can be used to query only a portion of the real response.
+	 * `sort` sorts the result by the specified tag. The sort is descending if the tag is prefixed with a
+	 * minus (‘-‘). Without sort, the order is undefined. Only the first tag value will be used,
+	 * if multiple of the same type exist. To sort by “Artist”, “Album” or “AlbumArtist”, you should
+	 * specify “ArtistSort”, “AlbumSort” or “AlbumArtistSort” instead. These will automatically fall back
+	 * to the former if “*Sort” doesn’t exist. “AlbumArtist” falls back to just “Artist”. The type
+	 * “Last-Modified” can sort by file modification time.
 	 * `filter` is either a filter expression as described
 	 * [here](https://www.musicpd.org/doc/html/protocol.html#filter-syntax)
 	 * or an array of tuples containing a tag or one of the special parameters listed below
@@ -55,12 +61,11 @@ export class DatabaseCommands {
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
 	 * supported by MPD.
 	 */
-	find(filter: string | [string, string][], start?: number, end?: number): Promise<Song[]> {
+	find(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
 		let cmd = 'find';
 		cmd = addFilter(cmd, filter);
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` window ${start}:${end}`;
-		}
+		cmd = addSort(cmd, sort);
+		cmd = addWindow(cmd, start, end);
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
 			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
@@ -70,9 +75,11 @@ export class DatabaseCommands {
 	 * Finds songs in the database that match exactly and adds them to the current playlist.
 	 * Parameters have the same meaning as for `find()`.
 	 */
-	findAdd(filter: string | [string, string][]): Promise<void> {
+	findAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = 'findadd';
 		cmd = addFilter(cmd, filter);
+		cmd = addSort(cmd, sort);
+		cmd = addWindow(cmd, start, end);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -80,12 +87,11 @@ export class DatabaseCommands {
 	 * Searches for any song that matches. Parameters have the same meaning as for `find()`,
 	 * except that the search is a case insensitive substring search.
 	 */
-	search(filter: string | [string, string][], start?: number, end?: number): Promise<Song[]> {
+	search(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<Song[]> {
 		let cmd = 'search';
 		cmd = addFilter(cmd, filter);
-		if ((typeof start === 'number') && (typeof end === 'number')) {
-			cmd += ` window ${start}:${end}`;
-		}
+		cmd = addSort(cmd, sort);
+		cmd = addWindow(cmd, start, end);
 		return this.protocol.sendCommand(cmd).then(
 			(lines) => this.protocol.parse(lines, ['file'], 
 			(valueMap) => <Song>DirectoryEntry.fromValueMap(valueMap, true)));
@@ -96,9 +102,11 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAdd(filter: string | [string, string][]): Promise<void> {
+	searchAdd(filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = 'searchadd';
 		cmd = addFilter(cmd, filter);
+		cmd = addSort(cmd, sort);
+		cmd = addWindow(cmd, start, end);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -108,9 +116,11 @@ export class DatabaseCommands {
 	 * Parameters have the same meaning as for `find()`, except that the search is a
 	 * case insensitive substring search.
 	 */
-	searchAddPlaylist(name: string, filter: string | [string, string][]): Promise<void> {
+	searchAddPlaylist(name: string, filter: string | [string, string][], start?: number, end?: number, sort?: string): Promise<void> {
 		let cmd = `searchaddpl ${name}`;
 		cmd = addFilter(cmd, filter);
+		cmd = addSort(cmd, sort);
+		cmd = addWindow(cmd, start, end);
 		return this.protocol.sendCommand(cmd).then(() => {});
 	}
 
@@ -179,7 +189,7 @@ export class DatabaseCommands {
 
 	/**
 	 * Lists unique tags values of the specified type. `type` can be any tag supported by MPD
-	 * or 'file'. `filter` specifies a filter like the one in `find()`.
+	 * or 'file', but 'file' is deprecated. `filter` specifies a filter like the one in `find()`.
 	 * `groupingTags` may be used to group the results by one or more tags.
 	 * Note that tags are case sensitive and that the MPD documentation incorrectly lists all
 	 * tags as lower-case. Use `mpc.reflection.tagTypes()` to get the correct list of tags
@@ -260,6 +270,20 @@ function addFilter(cmd: string, filter: string | [string, string][]): string {
 		filter.forEach((tagAndNeedle) => {
 			cmd += ` ${tagAndNeedle[0]} "${tagAndNeedle[1]}"`;
 		});
+	}
+	return cmd;
+}
+
+function addSort(cmd: string, sort?: string): string {
+	if (sort !== undefined) {
+		cmd += ` sort ${sort}`;
+	}
+	return cmd;
+}
+
+function addWindow(cmd: string, start?: number, end?: number): string {
+	if (start !== undefined) {
+		cmd += ` window ${start}:${(end !== undefined) ? end : ''}`;
 	}
 	return cmd;
 }
