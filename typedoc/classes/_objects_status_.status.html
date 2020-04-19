@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Status | mpc-js-core</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for mpc-js-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -109,6 +109,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#mixrampdb" class="tsd-kind-icon">mixrampdb</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#nextsong" class="tsd-kind-icon">next<wbr>Song</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#nextsongid" class="tsd-kind-icon">next<wbr>Song<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#partition" class="tsd-kind-icon">partition</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#playlistlength" class="tsd-kind-icon">playlist<wbr>Length</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#playlistversion" class="tsd-kind-icon">playlist<wbr>Version</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="_objects_status_.status.html#random" class="tsd-kind-icon">random</a></li>
@@ -138,7 +139,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in objects/status.ts:94</li>
+									<li>Defined in src/objects/status.ts:104</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -156,11 +157,11 @@
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="audio" class="tsd-anchor"></a>
-					<h3>audio</h3>
-					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> audio</h3>
+					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:46</li>
+							<li>Defined in src/objects/status.ts:53</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,21 +172,21 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="bitdepth" class="tsd-anchor"></a>
-					<h3>bit<wbr>Depth</h3>
-					<div class="tsd-signature tsd-kind-icon">bit<wbr>Depth<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bit<wbr>Depth</h3>
+					<div class="tsd-signature tsd-kind-icon">bit<wbr>Depth<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:50</li>
+							<li>Defined in src/objects/status.ts:57</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="bitrate" class="tsd-anchor"></a>
-					<h3>bit<wbr>Rate</h3>
-					<div class="tsd-signature tsd-kind-icon">bit<wbr>Rate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bit<wbr>Rate</h3>
+					<div class="tsd-signature tsd-kind-icon">bit<wbr>Rate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:41</li>
+							<li>Defined in src/objects/status.ts:48</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,31 +197,31 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="channels" class="tsd-anchor"></a>
-					<h3>channels</h3>
-					<div class="tsd-signature tsd-kind-icon">channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> channels</h3>
+					<div class="tsd-signature tsd-kind-icon">channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:52</li>
+							<li>Defined in src/objects/status.ts:59</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="consume" class="tsd-anchor"></a>
-					<h3>consume</h3>
-					<div class="tsd-signature tsd-kind-icon">consume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> consume</h3>
+					<div class="tsd-signature tsd-kind-icon">consume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:87</li>
+							<li>Defined in src/objects/status.ts:97</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="duration" class="tsd-anchor"></a>
-					<h3>duration</h3>
-					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> duration</h3>
+					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:36</li>
+							<li>Defined in src/objects/status.ts:43</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,11 +232,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="elapsed" class="tsd-anchor"></a>
-					<h3>elapsed</h3>
-					<div class="tsd-signature tsd-kind-icon">elapsed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> elapsed</h3>
+					<div class="tsd-signature tsd-kind-icon">elapsed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:31</li>
+							<li>Defined in src/objects/status.ts:38</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,21 +247,21 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="error" class="tsd-anchor"></a>
-					<h3>error</h3>
-					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:94</li>
+							<li>Defined in src/objects/status.ts:104</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="mixrampdelay" class="tsd-anchor"></a>
-					<h3>mixramp<wbr>Delay</h3>
-					<div class="tsd-signature tsd-kind-icon">mixramp<wbr>Delay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> mixramp<wbr>Delay</h3>
+					<div class="tsd-signature tsd-kind-icon">mixramp<wbr>Delay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:72</li>
+							<li>Defined in src/objects/status.ts:79</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -271,11 +272,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="mixrampdb" class="tsd-anchor"></a>
-					<h3>mixrampdb</h3>
-					<div class="tsd-signature tsd-kind-icon">mixrampdb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> mixrampdb</h3>
+					<div class="tsd-signature tsd-kind-icon">mixrampdb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:67</li>
+							<li>Defined in src/objects/status.ts:74</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -286,11 +287,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="nextsong" class="tsd-anchor"></a>
-					<h3>next<wbr>Song</h3>
-					<div class="tsd-signature tsd-kind-icon">next<wbr>Song<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> next<wbr>Song</h3>
+					<div class="tsd-signature tsd-kind-icon">next<wbr>Song<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:21</li>
+							<li>Defined in src/objects/status.ts:28</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -301,11 +302,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="nextsongid" class="tsd-anchor"></a>
-					<h3>next<wbr>Song<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">next<wbr>Song<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> next<wbr>Song<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">next<wbr>Song<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:26</li>
+							<li>Defined in src/objects/status.ts:33</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -315,22 +316,42 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
-					<a name="playlistlength" class="tsd-anchor"></a>
-					<h3>playlist<wbr>Length</h3>
-					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="partition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> partition</h3>
+					<div class="tsd-signature tsd-kind-icon">partition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:79</li>
+							<li>Defined in src/objects/status.ts:11</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the name of the current partition</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="playlistlength" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> playlist<wbr>Length</h3>
+					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/objects/status.ts:89</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>integer, the length of the playlist</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="playlistversion" class="tsd-anchor"></a>
-					<h3>playlist<wbr>Version</h3>
-					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> playlist<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">playlist<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:77</li>
+							<li>Defined in src/objects/status.ts:84</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -341,51 +362,51 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="random" class="tsd-anchor"></a>
-					<h3>random</h3>
-					<div class="tsd-signature tsd-kind-icon">random<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> random</h3>
+					<div class="tsd-signature tsd-kind-icon">random<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:83</li>
+							<li>Defined in src/objects/status.ts:93</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="repeat" class="tsd-anchor"></a>
-					<h3>repeat</h3>
-					<div class="tsd-signature tsd-kind-icon">repeat<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> repeat</h3>
+					<div class="tsd-signature tsd-kind-icon">repeat<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:81</li>
+							<li>Defined in src/objects/status.ts:91</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="samplerate" class="tsd-anchor"></a>
-					<h3>sample<wbr>Rate</h3>
-					<div class="tsd-signature tsd-kind-icon">sample<wbr>Rate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sample<wbr>Rate</h3>
+					<div class="tsd-signature tsd-kind-icon">sample<wbr>Rate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:48</li>
+							<li>Defined in src/objects/status.ts:55</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="single" class="tsd-anchor"></a>
-					<h3>single</h3>
-					<div class="tsd-signature tsd-kind-icon">single<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> single</h3>
+					<div class="tsd-signature tsd-kind-icon">single<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"oneshot"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:85</li>
+							<li>Defined in src/objects/status.ts:95</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="song" class="tsd-anchor"></a>
-					<h3>song</h3>
-					<div class="tsd-signature tsd-kind-icon">song<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> song</h3>
+					<div class="tsd-signature tsd-kind-icon">song<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:11</li>
+							<li>Defined in src/objects/status.ts:18</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -396,11 +417,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="songid" class="tsd-anchor"></a>
-					<h3>song<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">song<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> song<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">song<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:16</li>
+							<li>Defined in src/objects/status.ts:23</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -411,21 +432,21 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="state" class="tsd-anchor"></a>
-					<h3>state</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> state</h3>
 					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"play"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"stop"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"pause"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:6</li>
+							<li>Defined in src/objects/status.ts:13</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="updating" class="tsd-anchor"></a>
-					<h3>updating</h3>
-					<div class="tsd-signature tsd-kind-icon">updating<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> updating</h3>
+					<div class="tsd-signature tsd-kind-icon">updating<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:92</li>
+							<li>Defined in src/objects/status.ts:102</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -436,11 +457,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="volume" class="tsd-anchor"></a>
-					<h3>volume</h3>
-					<div class="tsd-signature tsd-kind-icon">volume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> volume</h3>
+					<div class="tsd-signature tsd-kind-icon">volume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:57</li>
+							<li>Defined in src/objects/status.ts:64</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -451,11 +472,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="xfade" class="tsd-anchor"></a>
-					<h3>xfade</h3>
-					<div class="tsd-signature tsd-kind-icon">xfade<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xfade</h3>
+					<div class="tsd-signature tsd-kind-icon">xfade<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in objects/status.ts:62</li>
+							<li>Defined in src/objects/status.ts:69</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -472,8 +493,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_objects_status_.html">"objects/status"</a>
+					<li class="current tsd-kind-module tsd-is-external">
+						<a href="../modules/_objects_status_.html">&quot;objects/status&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -481,7 +502,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_status_.status.html" class="tsd-kind-icon">Status</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
@@ -522,6 +543,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="_objects_status_.status.html#nextsongid" class="tsd-kind-icon">next<wbr>Song<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="_objects_status_.status.html#partition" class="tsd-kind-icon">partition</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="_objects_status_.status.html#playlistlength" class="tsd-kind-icon">playlist<wbr>Length</a>
@@ -572,63 +596,11 @@
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

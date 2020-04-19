@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Playlist | mpc-js-core</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for mpc-js-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -89,7 +89,7 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="_objects_database_.playlist.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="_objects_database_.playlist.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
@@ -115,17 +115,18 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Playlist<span class="tsd-signature-symbol">(</span>valueMap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_objects_database_.playlist.html" class="tsd-signature-type">Playlist</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:105</li>
+									<li>Defined in src/objects/database.ts:232</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -148,18 +149,18 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#entrytype">entryType</a></p>
 						<ul>
-							<li>Defined in objects/database.ts:105</li>
+							<li>Defined in src/objects/database.ts:232</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 					<a name="lastmodified" class="tsd-anchor"></a>
-					<h3>last<wbr>Modified</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Modified</h3>
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Modified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#lastmodified">lastModified</a></p>
 						<ul>
-							<li>Defined in objects/database.ts:12</li>
+							<li>Defined in src/objects/database.ts:14</li>
 						</ul>
 					</aside>
 				</section>
@@ -170,7 +171,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#path">path</a></p>
 						<ul>
-							<li>Defined in objects/database.ts:11</li>
+							<li>Defined in src/objects/database.ts:13</li>
 						</ul>
 					</aside>
 				</section>
@@ -181,17 +182,17 @@
 					<a name="isdirectory" class="tsd-anchor"></a>
 					<h3>is<wbr>Directory</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Directory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Directory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Directory</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#isdirectory">isDirectory</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:32</li>
+									<li>Defined in src/objects/database.ts:46</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Directory</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -199,17 +200,17 @@
 					<a name="isfile" class="tsd-anchor"></a>
 					<h3>is<wbr>File</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">File</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#isfile">isFile</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:29</li>
+									<li>Defined in src/objects/database.ts:43</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">File</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -217,17 +218,17 @@
 					<a name="isplaylist" class="tsd-anchor"></a>
 					<h3>is<wbr>Playlist</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Playlist<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Playlist<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Playlist</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#isplaylist">isPlaylist</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:31</li>
+									<li>Defined in src/objects/database.ts:45</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Playlist</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -235,17 +236,17 @@
 					<a name="issong" class="tsd-anchor"></a>
 					<h3>is<wbr>Song</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Song<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Song<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Song</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#issong">isSong</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:30</li>
+									<li>Defined in src/objects/database.ts:44</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Song</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -260,7 +261,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_objects_database_.directoryentry.html">DirectoryEntry</a>.<a href="_objects_database_.directoryentry.html#fromvaluemap">fromValueMap</a></p>
 								<ul>
-									<li>Defined in objects/database.ts:15</li>
+									<li>Defined in src/objects/database.ts:26</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -269,7 +270,7 @@
 									<h5>valueMap: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> withMetadata: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> withMetadata: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_objects_database_.directoryentry.html" class="tsd-signature-type">DirectoryEntry</a></h4>
@@ -284,31 +285,31 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_objects_database_.html">"objects/database"</a>
+					<li class="current tsd-kind-module tsd-is-external">
+						<a href="../modules/_objects_database_.html">&quot;objects/database&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.directory.html" class="tsd-kind-icon">Directory</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.directoryentry.html" class="tsd-kind-icon">Directory<wbr>Entry</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.file.html" class="tsd-kind-icon">File</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.groupedsongcount.html" class="tsd-kind-icon">Grouped<wbr>Song<wbr>Count</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.playlist.html" class="tsd-kind-icon">Playlist</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 								<a href="_objects_database_.playlist.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
@@ -339,13 +340,13 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.song.html" class="tsd-kind-icon">Song</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
 						<a href="_objects_database_.songcount.html" class="tsd-kind-icon">Song<wbr>Count</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
 						<a href="../modules/_objects_database_.html#directoryentrytype" class="tsd-kind-icon">Directory<wbr>Entry<wbr>Type</a>
 					</li>
 				</ul>
@@ -357,63 +358,11 @@
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

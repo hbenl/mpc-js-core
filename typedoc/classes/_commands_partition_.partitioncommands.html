@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MountCommands | mpc-js-core</title>
+	<title>PartitionCommands | mpc-js-core</title>
 	<meta name="description" content="Documentation for mpc-js-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_commands_mount_.html">&quot;commands/mount&quot;</a>
+					<a href="../modules/_commands_partition_.html">&quot;commands/partition&quot;</a>
 				</li>
 				<li>
-					<a href="_commands_mount_.mountcommands.html">MountCommands</a>
+					<a href="_commands_partition_.partitioncommands.html">PartitionCommands</a>
 				</li>
 			</ul>
-			<h1>Class MountCommands</h1>
+			<h1>Class PartitionCommands</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MountCommands</span>
+						<span class="target">PartitionCommands</span>
 					</li>
 				</ul>
 			</section>
@@ -84,22 +84,23 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="_commands_mount_.mountcommands.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="_commands_mount_.mountcommands.html#protocol" class="tsd-kind-icon">protocol</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="_commands_partition_.partitioncommands.html#protocol" class="tsd-kind-icon">protocol</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_mount_.mountcommands.html#listmounts" class="tsd-kind-icon">list<wbr>Mounts</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_mount_.mountcommands.html#listneighbors" class="tsd-kind-icon">list<wbr>Neighbors</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_mount_.mountcommands.html#mount" class="tsd-kind-icon">mount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_mount_.mountcommands.html#unmount" class="tsd-kind-icon">unmount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#deletepartition" class="tsd-kind-icon">delete<wbr>Partition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#listpartitions" class="tsd-kind-icon">list<wbr>Partitions</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#moveoutput" class="tsd-kind-icon">move<wbr>Output</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#newpartition" class="tsd-kind-icon">new<wbr>Partition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_commands_partition_.partitioncommands.html#partition" class="tsd-kind-icon">partition</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,13 +112,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Mount<wbr>Commands<span class="tsd-signature-symbol">(</span>protocol<span class="tsd-signature-symbol">: </span><a href="_protocol_.mpdprotocol.html" class="tsd-signature-type">MPDProtocol</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_commands_mount_.mountcommands.html" class="tsd-signature-type">MountCommands</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Partition<wbr>Commands<span class="tsd-signature-symbol">(</span>protocol<span class="tsd-signature-symbol">: </span><a href="_protocol_.mpdprotocol.html" class="tsd-signature-type">MPDProtocol</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_commands_partition_.partitioncommands.html" class="tsd-signature-type">PartitionCommands</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/commands/mount.ts:4</li>
+									<li>Defined in src/commands/partition.ts:3</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -126,7 +127,7 @@
 									<h5>protocol: <a href="_protocol_.mpdprotocol.html" class="tsd-signature-type">MPDProtocol</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_commands_mount_.mountcommands.html" class="tsd-signature-type">MountCommands</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_commands_partition_.partitioncommands.html" class="tsd-signature-type">PartitionCommands</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -139,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">protocol<span class="tsd-signature-symbol">:</span> <a href="_protocol_.mpdprotocol.html" class="tsd-signature-type">MPDProtocol</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/commands/mount.ts:6</li>
+							<li>Defined in src/commands/partition.ts:5</li>
 						</ul>
 					</aside>
 				</section>
@@ -147,75 +148,27 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="listmounts" class="tsd-anchor"></a>
-					<h3>list<wbr>Mounts</h3>
+					<a name="deletepartition" class="tsd-anchor"></a>
+					<h3>delete<wbr>Partition</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Mounts<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_objects_mount_.mount.html" class="tsd-signature-type">Mount</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Partition<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/commands/mount.ts:27</li>
+									<li>Defined in src/commands/partition.ts:33</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Queries a list of all mounts. By default, this contains just the configured <code>music_directory</code>.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_objects_mount_.mount.html" class="tsd-signature-type">Mount</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="listneighbors" class="tsd-anchor"></a>
-					<h3>list<wbr>Neighbors</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Neighbors<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_objects_mount_.neighbor.html" class="tsd-signature-type">Neighbor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/commands/mount.ts:36</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Queries a list of &quot;neighbors&quot; (e.g. accessible file servers on the local net).
-									Items on that list may be used with <code>mount()</code>.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_objects_mount_.neighbor.html" class="tsd-signature-type">Neighbor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="mount" class="tsd-anchor"></a>
-					<h3>mount</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">mount<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/commands/mount.ts:11</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Mount the specified remote storage <code>uri</code> at the given <code>path</code>.</p>
+									<p>Delete a partition. The partition must be empty (no connected clients and no outputs).</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>path: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>uri: <span class="tsd-signature-type">string</span></h5>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -223,27 +176,105 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="unmount" class="tsd-anchor"></a>
-					<h3>unmount</h3>
+					<a name="listpartitions" class="tsd-anchor"></a>
+					<h3>list<wbr>Partitions</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">unmount<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Partitions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/commands/mount.ts:19</li>
+									<li>Defined in src/commands/partition.ts:17</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Unmounts the specified <code>path</code>.</p>
+									<p>Returns a list of partitions.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="moveoutput" class="tsd-anchor"></a>
+					<h3>move<wbr>Output</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">move<wbr>Output<span class="tsd-signature-symbol">(</span>outputName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/commands/partition.ts:40</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Move an output to the current partition.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<h5>outputName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="newpartition" class="tsd-anchor"></a>
+					<h3>new<wbr>Partition</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">new<wbr>Partition<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/commands/partition.ts:26</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new partition.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="partition" class="tsd-anchor"></a>
+					<h3>partition</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">partition<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/commands/partition.ts:10</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Switch the client to a different partition.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -259,7 +290,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module tsd-is-external">
-						<a href="../modules/_commands_mount_.html">&quot;commands/mount&quot;</a>
+						<a href="../modules/_commands_partition_.html">&quot;commands/partition&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -268,25 +299,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-external">
-						<a href="_commands_mount_.mountcommands.html" class="tsd-kind-icon">Mount<wbr>Commands</a>
+						<a href="_commands_partition_.partitioncommands.html" class="tsd-kind-icon">Partition<wbr>Commands</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_commands_partition_.partitioncommands.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#protocol" class="tsd-kind-icon">protocol</a>
+								<a href="_commands_partition_.partitioncommands.html#protocol" class="tsd-kind-icon">protocol</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#listmounts" class="tsd-kind-icon">list<wbr>Mounts</a>
+								<a href="_commands_partition_.partitioncommands.html#deletepartition" class="tsd-kind-icon">delete<wbr>Partition</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#listneighbors" class="tsd-kind-icon">list<wbr>Neighbors</a>
+								<a href="_commands_partition_.partitioncommands.html#listpartitions" class="tsd-kind-icon">list<wbr>Partitions</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#mount" class="tsd-kind-icon">mount</a>
+								<a href="_commands_partition_.partitioncommands.html#moveoutput" class="tsd-kind-icon">move<wbr>Output</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="_commands_mount_.mountcommands.html#unmount" class="tsd-kind-icon">unmount</a>
+								<a href="_commands_partition_.partitioncommands.html#newpartition" class="tsd-kind-icon">new<wbr>Partition</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="_commands_partition_.partitioncommands.html#partition" class="tsd-kind-icon">partition</a>
 							</li>
 						</ul>
 					</li>
