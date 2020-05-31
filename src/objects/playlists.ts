@@ -16,8 +16,8 @@ export class StoredPlaylist {
 
 export class PlaylistItem {
 
-	id: number;
-	position: number;
+	id?: number;
+	position?: number;
 	title?: string;
 	name?: string;
 	artist?: string;
@@ -31,12 +31,8 @@ export class PlaylistItem {
 	lastModified?: Date;
 
 	constructor(valueMap: Map<string, string>) {
-
-		if (!valueMap.has('Id')) throw new Error('ID not found for PlaylistItem object');
-		if (!valueMap.has('Pos')) throw new Error('Position not found for PlaylistItem object');
-
-		this.id = Number(valueMap.get('Id'));
-		this.position = Number(valueMap.get('Pos'));
+		this.id = valueMap.has('Id') ? Number(valueMap.get('Id')) : undefined;
+		this.position = valueMap.has('Pos') ? Number(valueMap.get('Pos')) : undefined;
 		this.title = valueMap.get('Title');
 		this.name = valueMap.get('Name');
 		this.artist = valueMap.get('Artist');
