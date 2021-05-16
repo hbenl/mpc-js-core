@@ -189,28 +189,19 @@ export class DatabaseCommands {
 	 * supported by MPD.
 	 */
 	async list(type: string, filter: string | [string, string][] = [], groupingTags: string[] = []): Promise<Map<string[], string[]>> {
+		if (groupingTags.length > 1) {
+			throw new Error('Currently only zero or one grouping tags are supported');
+		}
 		let cmd = `list ${type}`;
 		cmd = addFilter(cmd, filter);
 		groupingTags.forEach(tag => {
 			cmd += ` group ${tag}`;
 		});
 		const lines = await this.protocol.sendCommand(cmd);
-		const tagsGroupedByString = new Map<string, string[]>();
-		this.protocol.parse(lines, [type], map => {
-			const group: string[] = [];
-			groupingTags.forEach(groupingTag => group.push(map.get(groupingTag) || ''));
-			const groupString = JSON.stringify(group);
-			if (!tagsGroupedByString.has(groupString)) {
-				tagsGroupedByString.set(groupString, []);
-			}
-			if (map.has(type)) {
-				tagsGroupedByString.get(groupString)!.push((map.get(type)!));
-			}
-		});
+		const tagsGroupedByString = this.protocol.parseGrouped(lines, groupingTags[0]);
 		const groupedTags = new Map<string[], string[]>();
-		tagsGroupedByString.forEach((tags, groupString_1) => {
-			const group_1 = JSON.parse(groupString_1);
-			groupedTags.set(group_1, tags);
+		tagsGroupedByString.forEach((tags, group) => {
+			groupedTags.set((groupingTags.length === 0) ? [] : [group], tags);
 		});
 		return groupedTags;
 	}
